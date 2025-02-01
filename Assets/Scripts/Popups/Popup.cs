@@ -3,26 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Very basic struct that stores all three components of a transform.
-/// Pretty much just makes it so that I don't have to make three seperate
-/// fields to store the reference to the popup's transform before being
-/// brought into focus.
-/// </summary>
-struct TransformComponents
-{
-    public Vector3 Pos { get; set; }
-    public Quaternion Rot { get; set; }
-    public Vector3 Scale { get; set; }
-
-    public void SetComponents(Vector3 pos, Quaternion rot, Vector3 scale)
-    {
-        Pos = pos;
-        Rot = rot;
-        Scale = scale;
-    }
-}
-
 public class Popup : MonoBehaviour
 {
     // ~~~ FIELDS ~~~
@@ -34,6 +14,8 @@ public class Popup : MonoBehaviour
     private Collider2D popupCollider;
     // The SpriteRenderer attached to this popup.
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private TransformComponents inFocusTransform;
 
     // ~~~ PROPERTIES ~~~
     /// <summary>
@@ -48,9 +30,14 @@ public class Popup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        preFocusTransform = new TransformComponents();
+        preFocusTransform = ScriptableObject.CreateInstance<TransformComponents>();
         popupCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (inFocusTransform == null)
+        {
+            inFocusTransform = ScriptableObject.CreateInstance<TransformComponents>();
+            inFocusTransform.SetComponents(Vector2.zero, Quaternion.Euler(0, 0, 0), Vector2.one);
+        }
     }
 
     // Update is called once per frame
@@ -81,9 +68,9 @@ public class Popup : MonoBehaviour
                     preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
 
                     // Make it display in the center of the screen
-                    transform.position = Vector2.zero;
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    transform.localScale = Vector2.one;
+                    transform.position = inFocusTransform.Pos;
+                    transform.rotation = inFocusTransform.Rot;
+                    transform.localScale = inFocusTransform.Scale;
                 }
             }
             else if (spriteRenderer.color != Color.white)
