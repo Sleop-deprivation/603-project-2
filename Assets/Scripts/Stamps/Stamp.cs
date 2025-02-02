@@ -7,8 +7,8 @@ public class Stamp : MonoBehaviour
 {
     private SpriteRenderer stamp;
     private Collider2D stampCollider;
-    private bool bStamped;
 
+    public bool bApproved;
     public Sprite approve;
     public Sprite deny;
 
@@ -17,7 +17,6 @@ public class Stamp : MonoBehaviour
     {
         stampCollider = GetComponent<Collider2D>();
         stamp = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        bStamped = false;
     }
 
     // Update is called once per frame
@@ -30,21 +29,17 @@ public class Stamp : MonoBehaviour
         // Check to see if the mouse is hovering over the popup
         if (stampCollider.OverlapPoint(mousePos))
         {
-            // Check if alr stamped
-            if (!bStamped)
+            if (Keyboard.current.aKey.wasPressedThisFrame)
             {
-                if (Keyboard.current.aKey.wasPressedThisFrame)
-                {
-                    // Set stamp to approved
-                    bStamped = true;
-                    stamp.sprite = approve;
-                }
-                if (Keyboard.current.dKey.wasPressedThisFrame)
-                {
-                    // Set stamp to denied
-                    bStamped = true;
-                    stamp.sprite = deny;
-                }
+                // Set stamp to approved
+                bApproved = true;
+                stamp.sprite = approve;
+            }
+            if (Keyboard.current.dKey.wasPressedThisFrame)
+            {
+                // Set stamp to denied
+                bApproved = false;
+                stamp.sprite = deny;
             }
 
         }
