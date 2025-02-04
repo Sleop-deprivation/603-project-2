@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PatientFile", menuName = "ScriptableObjects/PatientFile")]
 public class SO_PatientFiles : ScriptableObject
 {
+    public bool IsDenied;
+
     // Patient Information
     public string DayNumber;
     public string FullName;

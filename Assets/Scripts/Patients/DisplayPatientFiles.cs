@@ -34,6 +34,9 @@ public class DisplayPatientFiles : MonoBehaviour
 
     List<GameObject> documents = new List<GameObject>();
 
+    private SO_PatientFiles currentPatient;
+    public SO_PatientFiles CurrentPatient { get { return currentPatient; } }
+
     private void Awake()
     {
         patientPopUp = GetComponent<Popup>();
@@ -73,6 +76,7 @@ public class DisplayPatientFiles : MonoBehaviour
     public void Assign(SO_PatientFiles patient)
     {
         this.gameObject.name = patient.FullName;
+        currentPatient = patient;
 
         // Add appropriate documents to be displayed here. 
         documents.Add(InsuranceClaim);
