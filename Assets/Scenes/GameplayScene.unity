@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +393,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2199829897064714469, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 91306ce2d1a80574d89b548b3396e05e, type: 3}
     - target: {fileID: 2504243724935932195, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.69
@@ -433,9 +437,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3609601153892003544, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5471959338750062687, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
       propertyPath: m_Name
       value: PaitentPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471959338750062687, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004499534840434307, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8346783067306155255, guid: afe198b98d98b304d81ab316e1aceb45, type: 3}
@@ -548,38 +564,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1643443641629742557, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1643443641629742557, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1643443641629742557, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2847863182661983042, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
       propertyPath: m_Name
       value: NewspaperPopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923235520267027850, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -3845.8794
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923235520267027850, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2157.5325
       objectReference: {fileID: 0}
     - target: {fileID: 7710881213933992737, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7710881213933992737, guid: 713a3f9833c61c74fa3fafc9058ca2bb, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -419122763
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -596,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 1029193819779632673, guid: e0738e5e39c011b44b6c202366905950, type: 3}
       propertyPath: m_Name
       value: DrawingPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029193819779632673, guid: e0738e5e39c011b44b6c202366905950, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8993045228973801922, guid: e0738e5e39c011b44b6c202366905950, type: 3}
       propertyPath: m_LocalPosition.x
