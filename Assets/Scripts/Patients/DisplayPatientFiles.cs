@@ -23,6 +23,7 @@ public class DisplayPatientFiles : MonoBehaviour
     TextMeshProUGUI income;
     TextMeshProUGUI preExistingConditions;
     TextMeshProUGUI familyHealthHistory;
+    TextMeshProUGUI claim;
 
     GameObject GoldCardUI;
     GameObject GCTexts;
@@ -118,6 +119,9 @@ public class DisplayPatientFiles : MonoBehaviour
 
         familyHealthHistory = ClaimTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         familyHealthHistory.text = patient.FamilyHistory;
+
+        claim = ClaimTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        claim.text = patient.Claim;
 
         // If Patient has a gold card...
         if (patient.HasGoldCard) { 
