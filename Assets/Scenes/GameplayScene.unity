@@ -1911,6 +1911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patient File
       objectReference: {fileID: 0}
+    - target: {fileID: 671344265553767048, guid: edc1b260dba7e6e44855a21b5ea9558b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 817234881827475059, guid: edc1b260dba7e6e44855a21b5ea9558b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -1949,6 +1953,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 817234881827475059, guid: edc1b260dba7e6e44855a21b5ea9558b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269558251073517696, guid: edc1b260dba7e6e44855a21b5ea9558b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6424242436850788557, guid: edc1b260dba7e6e44855a21b5ea9558b, type: 3}
