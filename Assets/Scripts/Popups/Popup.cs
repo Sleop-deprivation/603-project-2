@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class Popup : MonoBehaviour
 {
     // ~~~ FIELDS ~~~
@@ -26,6 +27,7 @@ public class Popup : MonoBehaviour
         get { return spriteRenderer.sprite; }
         set { spriteRenderer.sprite  = value; }
     }
+    public bool InFocus { get { return inFocus; } }
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +73,9 @@ public class Popup : MonoBehaviour
                     transform.position = inFocusTransform.Pos;
                     transform.rotation = inFocusTransform.Rot;
                     transform.localScale = inFocusTransform.Scale;
+
+                    // Set high priority sorting order when focused
+                    spriteRenderer.sortingOrder = 5;
                 }
             }
             else if (spriteRenderer.color != Color.white)
@@ -88,6 +93,7 @@ public class Popup : MonoBehaviour
                 transform.position = preFocusTransform.Pos;
                 transform.rotation = preFocusTransform.Rot;
                 transform.localScale = preFocusTransform.Scale;
+                spriteRenderer.sortingOrder = 0;
             }    
         }
     }
