@@ -38,6 +38,9 @@ public class DisplayPatientFiles : MonoBehaviour
     private SO_PatientFiles currentPatient;
     public SO_PatientFiles CurrentPatient { get { return currentPatient; } }
 
+    public GameObject gameManager;
+    public List<string> status = new List<string>();
+
     private void Awake()
     {
         patientPopUp = GetComponent<Popup>();
@@ -69,6 +72,8 @@ public class DisplayPatientFiles : MonoBehaviour
                 o.SetActive(false);
             }
         }
+
+        gameManager=GameObject.Find("GameManager");
     }
     /// <summary>
     /// Assign patient data when the day starts. 
@@ -122,6 +127,8 @@ public class DisplayPatientFiles : MonoBehaviour
 
         claim = ClaimTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         claim.text = patient.Claim;
+
+       
 
         // If Patient has a gold card...
         if (patient.HasGoldCard) { 
