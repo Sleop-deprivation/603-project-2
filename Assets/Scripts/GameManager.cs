@@ -6,12 +6,13 @@ public class GameManager : MonoBehaviour
     static GameManager instance;
     static int dayNumber = -1;
 
+    public int money,bribes,rulesbrokenday1,rulesbrokenday2,rulesbrokenday3;
     [SerializeField] GameObject[] patientFiles;
     [SerializeField] SO_PatientFiles[] Day1Patients;
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
-
+    public List<List<string>> patientstatus = new List<List<string>>();
     //Make sure the GameObject remains intact between scenes
     void Awake()
     {
