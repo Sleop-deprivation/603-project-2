@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
+    private bool isPopupActive;
+    public bool IsPopupActive
+    {
+        get => isPopupActive;
+        set { isPopupActive = value; }
+    }
 
     //Make sure the GameObject remains intact between scenes
     void Awake()
