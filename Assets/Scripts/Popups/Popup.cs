@@ -52,7 +52,7 @@ public class Popup : MonoBehaviour
         if (!inFocus)
         {
             // This wasn't working with the && operator so I made it a seperate if statement for now
-            if (!gameManager.IsPopupActive) 
+            if (!gameManager.IsPopupActive && !gameManager.IsGamePaused) 
             {
                 // Temp code until GameManager (hopefully) includes a way to detect the current mouse position
                 Vector2 mousePos = Mouse.current.position.ReadValue();

@@ -12,10 +12,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
     private bool isPopupActive;
+    private bool isGamePaused;
+    [SerializeField] private GameObject pauseMenu;
     public bool IsPopupActive
     {
         get => isPopupActive;
         set { isPopupActive = value; }
+    }
+
+    public bool IsGamePaused
+    {
+        get => isGamePaused;
     }
 
     //Make sure the GameObject remains intact between scenes
@@ -50,4 +57,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UnpauseGame()
+    {
+        isGamePaused = false;
+        pauseMenu.SetActive(false);
+    }
 }
