@@ -16,10 +16,15 @@ public class GameManager : MonoBehaviour
     private bool isPopupActive;
     private bool isGamePaused;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject popupBackground;
     public bool IsPopupActive
     {
         get => isPopupActive;
-        set { isPopupActive = value; }
+        set 
+        { 
+            isPopupActive = value; 
+            popupBackground.SetActive(value);
+        }
     }
 
     public bool IsGamePaused
