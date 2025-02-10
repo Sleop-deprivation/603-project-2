@@ -35,6 +35,8 @@ public class Stamp : MonoBehaviour
                 status.Add(patient.FullName);
                 status.Add("approved");
                 gameManager.GetComponent<GameManager>().patientstatus.Add(status);
+              
+
 
             }
            

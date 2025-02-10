@@ -44,6 +44,39 @@ public class GameManager : MonoBehaviour
             ++i;
         }
     }
+    void CheckEndOfDay() {
+          if (dayNumber==0)
+                {
+                    foreach(SO_PatientFiles patient in Day1Patients) 
+                    {
+
+                    
+                    if (patient.AcceptanceGuideline!=Guidelines.None)
+                    {
+                       rulesbrokenday1++;
+                    }
+                    if (patient.DenialGuideline!=Guidelines.None)
+                    {
+                       rulesbrokenday1++;
+                    }
+                    }
+                }
+                else if (dayNumber==1)
+                {
+                     foreach(SO_PatientFiles patient in Day2Patients) 
+                    {
+                    if (patient.AcceptanceGuideline!=Guidelines.None)
+                    {
+                        rulesbrokenday2++;
+                    }
+                    if (patient.DenialGuideline!=Guidelines.None)
+                    {
+                       rulesbrokenday2++;
+                    }
+                    }
+                }
+        
+    }
     
 
 }
