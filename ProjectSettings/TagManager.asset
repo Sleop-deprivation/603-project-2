@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - ClaimBox
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Newspaper
     uniqueID: 3875844533
+    locked: 0
+  - name: ClaimBox
+    uniqueID: 2563274021
     locked: 0

@@ -9,6 +9,10 @@ public class Popup : MonoBehaviour
     // ~~~ FIELDS ~~~
     // Whether or not the popup is in focus or not.
     private bool inFocus;
+    // Whether or not the popup has been submitted
+    private bool submitted;
+    // Whether or not the popup has been grabbed
+    private bool isGrabbed;
     // The transform of the popup before it was in-focus.
     private TransformComponents preFocusTransform;
     // The collider attached to this popup.
@@ -25,9 +29,10 @@ public class Popup : MonoBehaviour
     public Sprite Texture
     {
         get { return spriteRenderer.sprite; }
-        set { spriteRenderer.sprite  = value; }
+        set { spriteRenderer.sprite = value; }
     }
     public bool InFocus { get { return inFocus; } }
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +45,17 @@ public class Popup : MonoBehaviour
             inFocusTransform = ScriptableObject.CreateInstance<TransformComponents>();
             inFocusTransform.SetComponents(Vector2.zero, Quaternion.Euler(0, 0, 0), Vector2.one);
         }
+        submitted = false;
+        isGrabbed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // If already submitted just return so player can not interact.
+        if (submitted)
+            return;
+
         // If not in-focus, check to see if the mouse is hovering the object
         if (!inFocus)
         {
@@ -52,35 +63,64 @@ public class Popup : MonoBehaviour
             Vector2 mousePos = Mouse.current.position.ReadValue();
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            // Check to see if the mouse is hovering over the popup
-            if (popupCollider.OverlapPoint(mousePos))
+            // When the mouse is right clicked while this popup is being hovered over:
+            if (Mouse.current.rightButton.wasPressedThisFrame)
+                if (popupCollider.OverlapPoint(mousePos))
+                    // Makes it so player can drag until they click again
+                    isGrabbed = !isGrabbed;
+
+            if (isGrabbed)
             {
-                // Highlighr the sprite green if it is being hovered over
-                if (spriteRenderer.color != Color.green)
-                    spriteRenderer.color = Color.green;
+                // Mark the popup as being grabbed
+                transform.position = mousePos;
+                spriteRenderer.color = Color.white;
 
-                // When the mouse is clicked while this popup is being hovered over:
-                if (Mouse.current.leftButton.wasPressedThisFrame)
+                // Set high priority sorting order when grabbed
+                spriteRenderer.sortingOrder = 5;
+
+                ContactFilter2D filter = new ContactFilter2D();
+                filter.SetLayerMask(LayerMask.GetMask("ApproveBox"));
+                List<Collider2D> results = new List<Collider2D>();
+
+                popupCollider.OverlapCollider(filter, results);
+                if (results.Count != 0)
                 {
-                    // Mark the popup as in focus
-                    inFocus = true;
-                    spriteRenderer.color = Color.white;
-
-                    // Store references to the transform values from before it was in focus
-                    preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
-
-                    // Make it display in the center of the screen
-                    transform.position = inFocusTransform.Pos;
-                    transform.rotation = inFocusTransform.Rot;
-                    transform.localScale = inFocusTransform.Scale;
-
-                    // Set high priority sorting order when focused
-                    spriteRenderer.sortingOrder = 5;
+                    submitted = true;
+                    transform.position = results[0].transform.position;
                 }
             }
-            else if (spriteRenderer.color != Color.white)
+            else
             {
-                spriteRenderer.color = Color.white;
+                // Check to see if the mouse is hovering over the popup
+                if (popupCollider.OverlapPoint(mousePos))
+                {
+                    // Highlighr the sprite green if it is being hovered over
+                    if (spriteRenderer.color != Color.green)
+                        spriteRenderer.color = Color.green;
+
+                    // When the mouse is clicked while this popup is being hovered over:
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
+                    {
+                        // Mark the popup as in focus
+                        inFocus = true;
+                        spriteRenderer.color = Color.white;
+
+                        // Store references to the transform values from before it was in focus
+                        preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
+
+                        // Make it display in the center of the screen
+                        transform.position = inFocusTransform.Pos;
+                        transform.rotation = inFocusTransform.Rot;
+                        transform.localScale = inFocusTransform.Scale;
+
+                        // Set high priority sorting order when focused
+                        spriteRenderer.sortingOrder = 5;
+                    }
+                }
+                else if (spriteRenderer.color != Color.white)
+                {
+                    spriteRenderer.color = Color.white;
+                }
             }
         }
         else
@@ -94,7 +134,7 @@ public class Popup : MonoBehaviour
                 transform.rotation = preFocusTransform.Rot;
                 transform.localScale = preFocusTransform.Scale;
                 spriteRenderer.sortingOrder = 0;
-            }    
+            }
         }
     }
 }
