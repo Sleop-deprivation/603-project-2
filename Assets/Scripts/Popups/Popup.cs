@@ -17,6 +17,8 @@ public class Popup : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private TransformComponents inFocusTransform;
+    // A reference to the GameManager.
+    private GameManager gameManager;
 
     // ~~~ PROPERTIES ~~~
     /// <summary>
@@ -40,47 +42,53 @@ public class Popup : MonoBehaviour
             inFocusTransform = ScriptableObject.CreateInstance<TransformComponents>();
             inFocusTransform.SetComponents(Vector2.zero, Quaternion.Euler(0, 0, 0), Vector2.one);
         }
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // If not in-focus, check to see if the mouse is hovering the object
+        // If not in-focus and while no other popups are active, check to see if the mouse is hovering the object
         if (!inFocus)
         {
-            // Temp code until GameManager (hopefully) includes a way to detect the current mouse position
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            // Check to see if the mouse is hovering over the popup
-            if (popupCollider.OverlapPoint(mousePos))
+            // This wasn't working with the && operator so I made it a seperate if statement for now
+            if (!gameManager.IsPopupActive && !gameManager.IsGamePaused) 
             {
-                // Highlighr the sprite green if it is being hovered over
-                if (spriteRenderer.color != Color.green)
-                    spriteRenderer.color = Color.green;
+                // Temp code until GameManager (hopefully) includes a way to detect the current mouse position
+                Vector2 mousePos = Mouse.current.position.ReadValue();
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-                // When the mouse is clicked while this popup is being hovered over:
-                if (Mouse.current.leftButton.wasPressedThisFrame)
+                // Check to see if the mouse is hovering over the popup
+                if (popupCollider.OverlapPoint(mousePos))
                 {
-                    // Mark the popup as in focus
-                    inFocus = true;
-                    spriteRenderer.color = Color.white;
+                    // Highlighr the sprite green if it is being hovered over
+                    if (spriteRenderer.color != Color.green)
+                        spriteRenderer.color = Color.green;
 
-                    // Store references to the transform values from before it was in focus
-                    preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
+                    // When the mouse is clicked while this popup is being hovered over:
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
+                    {
+                        // Mark the popup as in focus
+                        inFocus = true;
+                        spriteRenderer.color = Color.white;
+                        gameManager.IsPopupActive = true;
 
-                    // Make it display in the center of the screen
-                    transform.position = inFocusTransform.Pos;
-                    transform.rotation = inFocusTransform.Rot;
-                    transform.localScale = inFocusTransform.Scale;
+                        // Store references to the transform values from before it was in focus
+                        preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
 
-                    // Set high priority sorting order when focused
-                    spriteRenderer.sortingOrder = 5;
+                        // Make it display in the center of the screen
+                        transform.position = inFocusTransform.Pos;
+                        transform.rotation = inFocusTransform.Rot;
+                        transform.localScale = inFocusTransform.Scale;
+
+                        // Set high priority sorting order when focused
+                        spriteRenderer.sortingOrder = 5;
+                    }
                 }
-            }
-            else if (spriteRenderer.color != Color.white)
-            {
-                spriteRenderer.color = Color.white;
+                else if (spriteRenderer.color != Color.white)
+                {
+                    spriteRenderer.color = Color.white;
+                }
             }
         }
         else
@@ -94,6 +102,7 @@ public class Popup : MonoBehaviour
                 transform.rotation = preFocusTransform.Rot;
                 transform.localScale = preFocusTransform.Scale;
                 spriteRenderer.sortingOrder = 0;
+                gameManager.IsPopupActive = false;
             }    
         }
     }

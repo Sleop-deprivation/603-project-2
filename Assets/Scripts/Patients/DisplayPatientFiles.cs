@@ -9,7 +9,6 @@ public class DisplayPatientFiles : MonoBehaviour
     Popup patientPopUp;
     GameObject InsuranceClaim;
     GameObject GoldenInsuranceCard;
-    GameObject Background;
 
     GameObject ClaimsUI;
     GameObject ClaimTexts;
@@ -46,7 +45,6 @@ public class DisplayPatientFiles : MonoBehaviour
         patientPopUp = GetComponent<Popup>();
         InsuranceClaim = transform.GetChild(1).gameObject;
         GoldenInsuranceCard = transform.GetChild(2).gameObject;
-        Background = transform.GetChild(3).gameObject;
 
         ClaimsUI = transform.GetChild(0).GetChild(0).gameObject;
         ClaimTexts = ClaimsUI.transform.GetChild(0).gameObject;
@@ -87,7 +85,6 @@ public class DisplayPatientFiles : MonoBehaviour
         // Add appropriate documents to be displayed here. 
         documents.Add(InsuranceClaim);
         documents.Add(ClaimsUI);
-        documents.Add(Background);
 
         // Filling out Insurance Claim text boxes
         int i = 0;

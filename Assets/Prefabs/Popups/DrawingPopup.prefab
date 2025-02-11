@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e980539198d3b841af7df3f77d7d27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inFocusTransform: {fileID: 0}
 --- !u!61 &5589470426835213212
 BoxCollider2D:
   m_ObjectHideFlags: 0
