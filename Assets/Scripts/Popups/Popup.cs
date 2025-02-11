@@ -13,6 +13,10 @@ public class Popup : MonoBehaviour
     private bool submitted;
     // Whether or not the popup has been grabbed
     private bool isGrabbed;
+    // Reference to Approve stamp
+    private GameObject approveStamp;
+    // Reference to Approve stamp
+    private GameObject denyStamp;
     // The transform of the popup before it was in-focus.
     private TransformComponents preFocusTransform;
     // The collider attached to this popup.
@@ -47,6 +51,8 @@ public class Popup : MonoBehaviour
         }
         submitted = false;
         isGrabbed = false;
+        approveStamp = GameObject.Find("Approve Stamp");
+        denyStamp = GameObject.Find("Deny Stamp");
     }
 
     // Update is called once per frame
@@ -54,6 +60,10 @@ public class Popup : MonoBehaviour
     {
         // If already submitted just return so player can not interact.
         if (submitted)
+            return;
+
+        // If highlighted and stamp NOT selected just return so player can not interact.
+        if (!inFocus && (approveStamp.GetComponent<GrabStamp>().isGrabbed || denyStamp.GetComponent<GrabStamp>().isGrabbed))
             return;
 
         // If not in-focus, check to see if the mouse is hovering the object
@@ -125,9 +135,19 @@ public class Popup : MonoBehaviour
         }
         else
         {
+            if(Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed)
+            {
+                this.GetComponentInChildren<Stamp>().StampApprove(true);
+            }
+
+            if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed)
+            {
+                this.GetComponentInChildren<Stamp>().StampApprove(false);
+            }
+
             // When pressing the mouse button while this popup is in focus, un-focus it
             // and return it to its original position
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (Mouse.current.leftButton.wasPressedThisFrame && (!approveStamp.GetComponent<GrabStamp>().isGrabbed && !denyStamp.GetComponent<GrabStamp>().isGrabbed))
             {
                 inFocus = false;
                 transform.position = preFocusTransform.Pos;
