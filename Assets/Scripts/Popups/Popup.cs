@@ -30,6 +30,8 @@ public class Popup : MonoBehaviour
     // A reference to the GameManager.
     private GameManager gameManager;
 
+    [SerializeField] bool isClipped;
+
     // ~~~ PROPERTIES ~~~
     /// <summary>
     /// Public getter/setter for the popup's sprite.
@@ -66,6 +68,7 @@ public class Popup : MonoBehaviour
     {
         // If already submitted just return so player can not interact.
         if (submitted) return;
+
         // If highlighted and stamp NOT selected just return so player can not interact.
         if (!inFocus && (approveStamp.GetComponent<GrabStamp>().isGrabbed || denyStamp.GetComponent<GrabStamp>().isGrabbed)) return;
 
@@ -80,7 +83,7 @@ public class Popup : MonoBehaviour
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 // When the mouse is right clicked while this popup is being hovered over:
-                if (Mouse.current.rightButton.wasPressedThisFrame)
+                if (Mouse.current.rightButton.wasPressedThisFrame && !isClipped)
                     if (popupCollider.OverlapPoint(mousePos))
                         // Makes it so player can drag until they click again
                         isGrabbed = !isGrabbed;
@@ -115,60 +118,57 @@ public class Popup : MonoBehaviour
                         }
                     }
                 }
-                // Check to see if the mouse is hovering over the popup
-                else if (popupCollider.OverlapPoint(mousePos))
-                {
-                    // Highlighr the sprite green if it is being hovered over
-                    if (spriteRenderer.color != Color.green)
-                        spriteRenderer.color = Color.green;
-
-                    // When the mouse is clicked while this popup is being hovered over:
-                    if (Mouse.current.leftButton.wasPressedThisFrame)
-                    {
-                        // Mark the popup as in focus
-                        inFocus = true;
-                        spriteRenderer.color = Color.white;
-                        gameManager.IsPopupActive = true;
-
-                        // Store references to the transform values from before it was in focus
-                        preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
-
-                        // Make it display in the center of the screen
-                        transform.position = inFocusTransform.Pos;
-                        transform.rotation = inFocusTransform.Rot;
-                        transform.localScale = inFocusTransform.Scale;
-
-                        // Set high priority sorting order when focused
-                        spriteRenderer.sortingOrder = 5;
-                    }
-                }
-                else if (spriteRenderer.color != Color.white) spriteRenderer.color = Color.white;
                 else
                 {
-                    // if left click while approve is grabbed approve
-                    if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed)
+                    spriteRenderer.sortingOrder = 0;
+                    // Check to see if the mouse is hovering over the popup
+                    if (popupCollider.OverlapPoint(mousePos))
                     {
-                        this.GetComponentInChildren<Stamp>().StampApprove(true);
-                    }
+                        // Highlighr the sprite green if it is being hovered over
+                        if (spriteRenderer.color != Color.green) spriteRenderer.color = Color.green;
 
-                    // if left click while deny is grabbed deny
-                    if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed)
-                    {
-                        this.GetComponentInChildren<Stamp>().StampApprove(false);
-                    }
+                        // When the mouse is clicked while this popup is being hovered over:
+                        if (Mouse.current.leftButton.wasPressedThisFrame)
+                        {
+                            // Mark the popup as in focus
+                            inFocus = true;
+                            spriteRenderer.color = Color.white;
 
-                    // When pressing the mouse button while this popup is in focus, un-focus it
-                    // and return it to its original position only when no stamp is held
-                    if (Mouse.current.leftButton.wasPressedThisFrame && (!approveStamp.GetComponent<GrabStamp>().isGrabbed && !denyStamp.GetComponent<GrabStamp>().isGrabbed))
-                    {
-                        inFocus = false;
-                        transform.position = preFocusTransform.Pos;
-                        transform.rotation = preFocusTransform.Rot;
-                        transform.localScale = preFocusTransform.Scale;
-                        spriteRenderer.sortingOrder = 0;
-                        gameManager.IsPopupActive = false;
+                            // Store references to the transform values from before it was in focus
+                            preFocusTransform.SetComponents(transform.position, transform.rotation, transform.localScale);
+
+                            // Make it display in the center of the screen
+                            transform.position = inFocusTransform.Pos;
+                            transform.rotation = inFocusTransform.Rot;
+                            transform.localScale = inFocusTransform.Scale;
+
+                            // Set high priority sorting order when focused
+                            spriteRenderer.sortingOrder = 5;
+                            gameManager.IsPopupActive = true;
+                        }
                     }
+                    else if (spriteRenderer.color != Color.white) spriteRenderer.color = Color.white;
                 }
+            }
+        }
+
+        // When pressing the mouse button while this popup is in focus, un-focus it
+        // and return it to its original position only when no stamp is held
+        else
+        {
+            // if left click while approve is grabbed approve
+            if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(true);
+            // if left click while deny is grabbed deny
+            if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(false);
+
+            if (Mouse.current.leftButton.wasPressedThisFrame && (!approveStamp.GetComponent<GrabStamp>().isGrabbed && !denyStamp.GetComponent<GrabStamp>().isGrabbed))
+            {
+                inFocus = false;
+                transform.position = preFocusTransform.Pos;
+                transform.rotation = preFocusTransform.Rot;
+                transform.localScale = preFocusTransform.Scale;
+                spriteRenderer.sortingOrder = 0;
+                gameManager.IsPopupActive = false;
             }
         }
     }
