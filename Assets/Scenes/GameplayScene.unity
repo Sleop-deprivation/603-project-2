@@ -1354,7 +1354,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d098ed7ed3d280c43aed828a0243ea97, type: 2}
   - {fileID: 11400000, guid: 323ba5151864a724892219b65c3dd9ef, type: 2}
   - {fileID: 11400000, guid: 7bd1e4233b67a5c4ba6cdd3814a2eb63, type: 2}
-  Day2Patients: []
+  Day2Patients:
+  - {fileID: 11400000, guid: 89a5f1b496e00b4498a9cb07dac43416, type: 2}
+  - {fileID: 11400000, guid: 327999b89c60fd442a1e599e681404ad, type: 2}
+  - {fileID: 11400000, guid: ea82ead7605bb824c91b1d820c5d1fcf, type: 2}
+  - {fileID: 11400000, guid: bbc89183bbe98d143b8a68bd9dbf99b8, type: 2}
+  - {fileID: 11400000, guid: 1bade8e8a3ff7ca45ac5f1bd68dde0d1, type: 2}
+  - {fileID: 11400000, guid: c255169285c16c043957de978ed5511c, type: 2}
+  - {fileID: 11400000, guid: 53f62c64924fde14b80a4fefdce82ffc, type: 2}
+  - {fileID: 11400000, guid: e961e37dd189b2f4d9a887d9a3d140bc, type: 2}
+  - {fileID: 11400000, guid: a2d05143f14a1fb4ba5915e9029f9266, type: 2}
+  - {fileID: 11400000, guid: f701a79d21586cc4bb5293291175f05a, type: 2}
   Day3Patients: []
   pauseMenu: {fileID: 1302334581}
   popupBackground: {fileID: 1529655736}

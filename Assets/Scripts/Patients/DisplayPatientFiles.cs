@@ -155,6 +155,7 @@ public class DisplayPatientFiles : MonoBehaviour
 
         idAddress = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         idAddress.text = patient.Address;
+        if (patient.IDFraudType == Fraud.WrongAddress) idAddress.text = patient.IDFraudInput;
 
         idExpirationDate = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         idExpirationDate.text = patient.IDExpirationDate;
@@ -166,7 +167,7 @@ public class DisplayPatientFiles : MonoBehaviour
         idEyeColor.text = patient.IDEyeColor;
 
         // Get ID Picture
-
+        IDPicture.sprite = Resources.Load<Sprite>(patient.FullName);
 
         // If Patient has a gold card...
         if (patient.HasGoldCard) { 
@@ -176,6 +177,7 @@ public class DisplayPatientFiles : MonoBehaviour
 
             gcFullName = GCTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
             gcFullName.text = patient.FullName;
+            if (patient.GCFraudType == Fraud.WrongName) gcFullName.text = patient.GCFraudInput;
             gcDOB = GCTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
             gcDOB.text = patient.DOB;
             gcAddress = GCTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
@@ -184,6 +186,9 @@ public class DisplayPatientFiles : MonoBehaviour
             gcDateIssued.text = patient.GCIssueDate;
             gcDateExpires = GCTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
             gcDateExpires.text = patient.GCExpirationDate;
+
+            // Get gold card Picture
+            GCPicture.sprite = Resources.Load<Sprite>(patient.FullName);
         }
     }
 }
