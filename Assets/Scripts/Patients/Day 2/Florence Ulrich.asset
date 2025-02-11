@@ -10,37 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Alex Wyndsor
+  m_Name: Florence Ulrich
   m_EditorClassIdentifier: 
   IsDenied: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
-  FullName: Alex Wyndsor
-  DOB: 4/11/2001
+  DayNumber: Day 2
+  FullName: Florence Ulrich
+  DOB: 3/18/1990
   MaritalStatus: Single
-  Address: 42 Park Place, New York, New York 12305
-  Gender: 2
-  IsEmployed: 0
+  Address: 20 Elmo St, New York, NY 10010
+  Gender: 1
+  IsEmployed: 1
   HasDependents: 0
-  Income: 32k
-  Conditions: ADHD
-  FamilyHistory: ADHD, OCD
-  Claim: 'Broken Right Wrist: ER Visit, Cast, Pain Relief'
+  Income: 90k
+  Conditions: Ankle Fracture
+  FamilyHistory: Low Bone Density
+  Claim: 'Ankle Fracture: Cast and Pain Medication'
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 5'10"
-  IDEyeColor: Green
-  IDIssueDate: 4/11/19
-  IDExpirationDate: 4/11/27
+  IDHeight: 5'8"
+  IDEyeColor: Brown
+  IDIssueDate: 4/5/2018
+  IDExpirationDate: 4/5/2028
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 3
   DenialGuideline: 0

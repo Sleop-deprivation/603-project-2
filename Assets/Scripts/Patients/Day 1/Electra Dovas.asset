@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
   m_Name: Electra Dovas
   m_EditorClassIdentifier: 
+  IsDenied: 0
+  picture: {fileID: 0}
   DayNumber: Day 1
   FullName: Electra Dovas
   DOB: 11/06/1959
@@ -28,10 +30,17 @@ MonoBehaviour:
   GCIssueDate: 5/22/2022
   GCExpirationDate: 5/22/2026
   IsGCFraud: 0
+  GCFraudType: 0
+  GCFraudInput: 
   IDHeight: 5'7"
   IDEyeColor: Green
   IDIssueDate: 11/06/2016
   IDExpirationDate: 11/06/2026
   IsIDFraud: 0
+  IDFraudType: 0
+  IDFraudInput: 
+  PatientNote: 
+  OfferingBribe: 0
+  BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 1

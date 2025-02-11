@@ -10,37 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Alex Wyndsor
+  m_Name: Steven Giovana
   m_EditorClassIdentifier: 
   IsDenied: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
-  FullName: Alex Wyndsor
-  DOB: 4/11/2001
+  DayNumber: Day 2
+  FullName: Steven Giovana
+  DOB: 2/27/2005
   MaritalStatus: Single
-  Address: 42 Park Place, New York, New York 12305
-  Gender: 2
-  IsEmployed: 0
+  Address: 8531 Second Lane New York, NY 10009
+  Gender: 0
+  IsEmployed: 1
   HasDependents: 0
-  Income: 32k
-  Conditions: ADHD
-  FamilyHistory: ADHD, OCD
-  Claim: 'Broken Right Wrist: ER Visit, Cast, Pain Relief'
+  Income: 68k
+  Conditions: N/A
+  FamilyHistory: Diabetes
+  Claim: Antibiotics for Tuberculosis
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 5'10"
-  IDEyeColor: Green
-  IDIssueDate: 4/11/19
-  IDExpirationDate: 4/11/27
-  IsIDFraud: 0
-  IDFraudType: 0
-  IDFraudInput: 
+  IDHeight: 6'0"
+  IDEyeColor: Brown
+  IDIssueDate: 2/26/2024
+  IDExpirationDate: 2/26/2034
+  IsIDFraud: 1
+  IDFraudType: 4
+  IDFraudInput: 51 West Harvard Street New York, NY 10016
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 9
   DenialGuideline: 0

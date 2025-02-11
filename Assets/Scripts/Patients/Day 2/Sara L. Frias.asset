@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Alex Wyndsor
+  m_Name: Sara L. Frias
   m_EditorClassIdentifier: 
   IsDenied: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
-  FullName: Alex Wyndsor
-  DOB: 4/11/2001
+  DayNumber: Day 2
+  FullName: Sara L. Frias
+  DOB: 10/27/2000
   MaritalStatus: Single
-  Address: 42 Park Place, New York, New York 12305
-  Gender: 2
+  Address: 4557 House Rd, Shallow Shores, NY 39201
+  Gender: 1
   IsEmployed: 0
   HasDependents: 0
-  Income: 32k
-  Conditions: ADHD
-  FamilyHistory: ADHD, OCD
-  Claim: 'Broken Right Wrist: ER Visit, Cast, Pain Relief'
-  HasGoldCard: 0
-  GCIssueDate: 
-  GCExpirationDate: 
+  Income: 50k
+  Conditions: OCD
+  FamilyHistory: Marphan Syndrome
+  Claim: Liver Biopsy, MRI
+  HasGoldCard: 1
+  GCIssueDate: 9/10/2023
+  GCExpirationDate: 9/10/2027
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 5'10"
-  IDEyeColor: Green
-  IDIssueDate: 4/11/19
-  IDExpirationDate: 4/11/27
+  IDHeight: 4'11"
+  IDEyeColor: Blue
+  IDIssueDate: 12/10/2020
+  IDExpirationDate: 12/10/2030
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
@@ -43,4 +43,4 @@ MonoBehaviour:
   OfferingBribe: 0
   BribeAmount: 
   AcceptanceGuideline: 0
-  DenialGuideline: 0
+  DenialGuideline: 1

@@ -9,9 +9,11 @@ public class DisplayPatientFiles : MonoBehaviour
     Popup patientPopUp;
     GameObject InsuranceClaim;
     GameObject GoldenInsuranceCard;
+    GameObject IdentificationCard;
 
     GameObject ClaimsUI;
     GameObject ClaimTexts;
+    Image ClaimPicture;
     TextMeshProUGUI fullName;
     TextMeshProUGUI dob;
     TextMeshProUGUI maritalStatus;
@@ -26,31 +28,46 @@ public class DisplayPatientFiles : MonoBehaviour
 
     GameObject GoldCardUI;
     GameObject GCTexts;
+    Image GCPicture;
     TextMeshProUGUI gcFullName;
     TextMeshProUGUI gcDOB;
     TextMeshProUGUI gcAddress;
     TextMeshProUGUI gcDateIssued;
     TextMeshProUGUI gcDateExpires;
 
+    GameObject IDCardUI;
+    GameObject IDTexts;
+    Image IDPicture;
+    TextMeshProUGUI idFullName;
+    TextMeshProUGUI idDOB;
+    TextMeshProUGUI idAddress;
+    TextMeshProUGUI idExpirationDate;
+    TextMeshProUGUI idHeight;
+    TextMeshProUGUI idEyeColor;
+
     List<GameObject> documents = new List<GameObject>();
 
     private SO_PatientFiles currentPatient;
     public SO_PatientFiles CurrentPatient { get { return currentPatient; } }
-
-    public GameObject gameManager;
-    public List<string> status = new List<string>();
 
     private void Awake()
     {
         patientPopUp = GetComponent<Popup>();
         InsuranceClaim = transform.GetChild(1).gameObject;
         GoldenInsuranceCard = transform.GetChild(2).gameObject;
+        IdentificationCard = transform.GetChild(3).gameObject;
 
         ClaimsUI = transform.GetChild(0).GetChild(0).gameObject;
         ClaimTexts = ClaimsUI.transform.GetChild(0).gameObject;
+        ClaimPicture = ClaimsUI.transform.GetChild(1).GetComponent<Image>();
 
         GoldCardUI = transform.GetChild(0).GetChild(1).gameObject;
         GCTexts = GoldCardUI.transform.GetChild(0).gameObject;
+        GCPicture = GoldCardUI.transform.GetChild(1).GetComponent<Image>();
+
+        IDCardUI = transform.GetChild(0).GetChild(2).gameObject;
+        IDTexts = IDCardUI.transform.GetChild(0).gameObject;
+        IDPicture = IDCardUI.transform.GetChild(1).GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -70,8 +87,6 @@ public class DisplayPatientFiles : MonoBehaviour
                 o.SetActive(false);
             }
         }
-
-        gameManager=GameObject.Find("GameManager");
     }
     /// <summary>
     /// Assign patient data when the day starts. 
@@ -85,6 +100,8 @@ public class DisplayPatientFiles : MonoBehaviour
         // Add appropriate documents to be displayed here. 
         documents.Add(InsuranceClaim);
         documents.Add(ClaimsUI);
+        documents.Add(IdentificationCard);
+        documents.Add(IDCardUI);
 
         // Filling out Insurance Claim text boxes
         int i = 0;
@@ -125,7 +142,31 @@ public class DisplayPatientFiles : MonoBehaviour
         claim = ClaimTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         claim.text = patient.Claim;
 
-       
+        // Get Patient Claim Picture
+        ClaimPicture.sprite = Resources.Load<Sprite>(patient.FullName);
+
+        // Filling out ID Card Text Boxes
+        i = 0;
+        idFullName = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idFullName.text = patient.FullName;
+
+        idDOB = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idDOB.text = patient.DOB;
+
+        idAddress = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idAddress.text = patient.Address;
+
+        idExpirationDate = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idExpirationDate.text = patient.IDExpirationDate;
+
+        idHeight = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idHeight.text = patient.IDHeight;
+
+        idEyeColor = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
+        idEyeColor.text = patient.IDEyeColor;
+
+        // Get ID Picture
+
 
         // If Patient has a gold card...
         if (patient.HasGoldCard) { 

@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
   m_Name: Nathan Regufurn
   m_EditorClassIdentifier: 
+  IsDenied: 0
+  picture: {fileID: 0}
   DayNumber: Day 1
   FullName: Nathan Regufurn
   DOB: 8/10/1977
@@ -28,10 +30,17 @@ MonoBehaviour:
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
+  GCFraudType: 0
+  GCFraudInput: 
   IDHeight: 5'3"
   IDEyeColor: Brown
   IDIssueDate: 8/25/15
   IDExpirationDate: 8/25/25
   IsIDFraud: 0
+  IDFraudType: 0
+  IDFraudInput: 
+  PatientNote: 
+  OfferingBribe: 0
+  BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 0

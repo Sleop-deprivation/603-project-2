@@ -39,17 +39,23 @@ public class TSVtoSO
             patient.GCIssueDate = splitData[14];
             patient.GCExpirationDate = splitData[15];
             patient.IsGCFraud = splitData[16] == "Y" ? true : false;
-            // splitData[17] would be the golden card IF FRAUD: column, skip it for now
+            patient.GCFraudType = System.Enum.Parse<Fraud>(splitData[17]);
+            patient.GCFraudInput = splitData[18];
 
-            patient.IDHeight = splitData[18];
-            patient.IDEyeColor = splitData[19];
-            patient.IDIssueDate = splitData[20];
-            patient.IDExpirationDate = splitData[21];
-            patient.IsIDFraud = splitData[22] == "Y" ? true : false;
-            // splitData[23] would be the ID IF FRAUD: column, skip it for now
+            patient.IDHeight = splitData[19];
+            patient.IDEyeColor = splitData[20];
+            patient.IDIssueDate = splitData[21];
+            patient.IDExpirationDate = splitData[22];
+            patient.IsIDFraud = splitData[23] == "Y" ? true : false;
+            patient.IDFraudType = System.Enum.Parse<Fraud>(splitData[24]);
+            patient.IDFraudInput = splitData[25];
 
-            patient.AcceptanceGuideline = System.Enum.Parse<Guidelines>(splitData[24]);
-            patient.DenialGuideline = System.Enum.Parse<Guidelines>(splitData[25]);
+            patient.PatientNote = splitData[26];
+            patient.OfferingBribe = splitData[27] == "Y" ? true : false;
+            patient.BribeAmount = splitData[28];
+
+            patient.AcceptanceGuideline = System.Enum.Parse<Guidelines>(splitData[29]);
+            patient.DenialGuideline = System.Enum.Parse<Guidelines>(splitData[30]);
 
             AssetDatabase.CreateAsset(patient, $"Assets/Scripts/Patients/{patient.DayNumber}/{patient.FullName}.asset");
         }

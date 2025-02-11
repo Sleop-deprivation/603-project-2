@@ -10,37 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Alex Wyndsor
+  m_Name: Alan Fry
   m_EditorClassIdentifier: 
   IsDenied: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
-  FullName: Alex Wyndsor
-  DOB: 4/11/2001
-  MaritalStatus: Single
-  Address: 42 Park Place, New York, New York 12305
-  Gender: 2
-  IsEmployed: 0
-  HasDependents: 0
-  Income: 32k
-  Conditions: ADHD
-  FamilyHistory: ADHD, OCD
-  Claim: 'Broken Right Wrist: ER Visit, Cast, Pain Relief'
-  HasGoldCard: 0
-  GCIssueDate: 
-  GCExpirationDate: 
-  IsGCFraud: 0
-  GCFraudType: 0
-  GCFraudInput: 
+  DayNumber: Day 2
+  FullName: Alan Fry
+  DOB: 12/14/1997
+  MaritalStatus: Married
+  Address: 11 Grover Avenue, New York, NY 10006
+  Gender: 0
+  IsEmployed: 1
+  HasDependents: 1
+  Income: 120k
+  Conditions: Genital Warts
+  FamilyHistory: N/A
+  Claim: 'Genital Warts: Surgery'
+  HasGoldCard: 1
+  GCIssueDate: 4/14/2021
+  GCExpirationDate: 4/14/2025
+  IsGCFraud: 1
+  GCFraudType: 1
+  GCFraudInput: Alan David
   IDHeight: 5'10"
-  IDEyeColor: Green
-  IDIssueDate: 4/11/19
-  IDExpirationDate: 4/11/27
+  IDEyeColor: Brown
+  IDIssueDate: 2/3/2020
+  IDExpirationDate: 2/3/2030
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 9
   DenialGuideline: 0

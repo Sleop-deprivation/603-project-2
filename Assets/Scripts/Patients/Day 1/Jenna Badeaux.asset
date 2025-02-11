@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
   m_Name: Jenna Badeaux
   m_EditorClassIdentifier: 
+  IsDenied: 0
+  picture: {fileID: 0}
   DayNumber: Day 1
   FullName: Jenna Badeaux
   DOB: 11/27/1985
@@ -20,7 +22,7 @@ MonoBehaviour:
   Gender: 1
   IsEmployed: 1
   HasDependents: 1
-  Income: 67k
+  Income: 134k
   Conditions: Iron Deficiency Anemia
   FamilyHistory: Heart Disease
   Claim: Emergency Heart Transplant Surgery
@@ -28,10 +30,17 @@ MonoBehaviour:
   GCIssueDate: 4/3/2022
   GCExpirationDate: 4/3/2026
   IsGCFraud: 0
+  GCFraudType: 0
+  GCFraudInput: 
   IDHeight: 5'5"
   IDEyeColor: Black
   IDIssueDate: 11/27/2018
   IDExpirationDate: 11/27/2028
   IsIDFraud: 0
+  IDFraudType: 0
+  IDFraudInput: 
+  PatientNote: 
+  OfferingBribe: 0
+  BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 1
