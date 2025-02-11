@@ -19,6 +19,7 @@ public class Stamp : MonoBehaviour
     {
         patient = transform.parent.GetComponent<DisplayPatientFiles>().CurrentPatient;
         stamp = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        bApproved = false;
     }
 
     // Update is called once per frame
@@ -41,7 +42,7 @@ public class Stamp : MonoBehaviour
                 status.Add("approved");
                 gameManager.GetComponent<GameManager>().patientstatus.Add(status);
             }
-
+            this.GetComponentInParent<Popup>().bApproved = true;
             gameManager.GetComponent<GameManager>().patientstatus.Add(status);
         }
         else
@@ -56,6 +57,7 @@ public class Stamp : MonoBehaviour
                 gameManager.GetComponent<GameManager>().patientstatus.Add(status);
 
             }
+            this.GetComponentInParent<Popup>().bApproved = false;
         }
     }
 }

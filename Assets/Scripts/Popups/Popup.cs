@@ -17,6 +17,8 @@ public class Popup : MonoBehaviour
     private GameObject approveStamp;
     // Reference to Approve stamp
     private GameObject denyStamp;
+    // Is this approved?
+    public bool bApproved;
     // The transform of the popup before it was in-focus.
     private TransformComponents preFocusTransform;
     // The collider attached to this popup.
@@ -53,6 +55,7 @@ public class Popup : MonoBehaviour
         isGrabbed = false;
         approveStamp = GameObject.Find("Approve Stamp");
         denyStamp = GameObject.Find("Deny Stamp");
+        bApproved = false;
     }
 
     // Update is called once per frame
@@ -92,11 +95,21 @@ public class Popup : MonoBehaviour
                 filter.SetLayerMask(LayerMask.GetMask("ApproveBox"));
                 List<Collider2D> results = new List<Collider2D>();
 
+                // check if it overlaps with the boxes to submit files
                 popupCollider.OverlapCollider(filter, results);
                 if (results.Count != 0)
                 {
-                    submitted = true;
-                    transform.position = results[0].transform.position;
+                    // Check if document is approved or not and compare it to which bin it is entering
+                    if ((results[0].CompareTag("Approve Bin")) && bApproved)
+                    {
+                        submitted = true;
+                        transform.position = results[0].transform.position;
+                    }
+                    if ((results[0].name == "Denied Bin") && !bApproved)
+                    {
+                        submitted = true;
+                        transform.position = results[0].transform.position;
+                    }
                 }
             }
             else
@@ -135,18 +148,20 @@ public class Popup : MonoBehaviour
         }
         else
         {
-            if(Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed)
+            // if left click while approve is grabbed approve
+            if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed)
             {
                 this.GetComponentInChildren<Stamp>().StampApprove(true);
             }
 
+            // if left click while deny is grabbed deny
             if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed)
             {
                 this.GetComponentInChildren<Stamp>().StampApprove(false);
             }
 
             // When pressing the mouse button while this popup is in focus, un-focus it
-            // and return it to its original position
+            // and return it to its original position only when no stamp is held
             if (Mouse.current.leftButton.wasPressedThisFrame && (!approveStamp.GetComponent<GrabStamp>().isGrabbed && !denyStamp.GetComponent<GrabStamp>().isGrabbed))
             {
                 inFocus = false;
