@@ -7,6 +7,7 @@ public class DataTracking : MonoBehaviour
 {
     public void RecordData(SO_PatientFiles patient)
     {
+        print("Tracking data...");
         // Record the infraction if there is one
         string guideLine;
         // If there is a penalty for accepting, and the patient is accepted... 
@@ -18,9 +19,10 @@ public class DataTracking : MonoBehaviour
         StreamWriter writer = null;
         try
         {
-            writer = new StreamWriter(GetPath());
+            writer = new StreamWriter(GetPath(), append: true);
             string saveData = String.Format("{0},{1},{2},{3}", patient.DayNumber, patient.FullName, patient.IsDenied, guideLine);
             writer.WriteLine(saveData);
+            print("Successfully wrote to " + GetPath());
         }
         catch (Exception e)
         {
