@@ -149,6 +149,7 @@ public class DisplayPatientFiles : MonoBehaviour
         i = 0;
         idFullName = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         idFullName.text = patient.FullName;
+        if (patient.IDFraudType == Fraud.WrongName) idFullName.text = patient.IDFraudInput;
 
         idDOB = IDTexts.transform.GetChild(i++).GetComponent<TextMeshProUGUI>();
         idDOB.text = patient.DOB;
