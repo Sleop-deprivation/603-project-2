@@ -11,7 +11,7 @@ public class CheckForMouseClick : MonoBehaviour
 
     private void Start()
     {
-        sceneChanger = FindObjectOfType<SceneChanger>();
+        sceneChanger = GetComponent<SceneChanger>();
         delayTime = FindObjectOfType<OscillateTextAlpha>().DelayTime;
     }
     // Update is called once per frame

@@ -95,7 +95,7 @@ public class Popup : MonoBehaviour
                     spriteRenderer.color = Color.white;
 
                     // Set high priority sorting order when grabbed
-                    spriteRenderer.sortingOrder = 5;
+                    spriteRenderer.sortingOrder = 7;
 
                     ContactFilter2D filter = new ContactFilter2D();
                     filter.SetLayerMask(LayerMask.GetMask("ApproveBox"));
@@ -110,11 +110,13 @@ public class Popup : MonoBehaviour
                         {
                             submitted = true;
                             transform.position = results[0].transform.position;
+                            gameManager.FilesTurnedIn++;
                         }
                         if ((results[0].name == "Denied Bin") && !bApproved)
                         {
                             submitted = true;
                             transform.position = results[0].transform.position;
+                            gameManager.FilesTurnedIn++;
                         }
                     }
                 }

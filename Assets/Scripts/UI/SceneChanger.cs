@@ -18,6 +18,6 @@ public class SceneChanger : MonoBehaviour
     public void GoToPreviousScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex--);
+        SceneManager.LoadScene(--currentSceneIndex);
     }
 }

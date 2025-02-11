@@ -5,9 +5,9 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
     static int dayNumber = -1;
+    public int DayNum { get { return dayNumber; } }
 
     public int money,bribes,rulesbrokenday1,rulesbrokenday2,rulesbrokenday3;
-    [SerializeField] GameObject[] patientFiles;
     [SerializeField] SO_PatientFiles[] Day1Patients;
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private bool isGamePaused;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject popupBackground;
+
+    int filesTurnedIn;
+    public int FilesTurnedIn { get { return filesTurnedIn; } set { filesTurnedIn = value; } }
     public bool IsPopupActive
     {
         get => isPopupActive;
@@ -64,6 +67,11 @@ public class GameManager : MonoBehaviour
             else
                 UnpauseGame();
         }
+        if(filesTurnedIn == 10)
+        {
+            filesTurnedIn = 0;
+            CheckEndOfDay();
+        }
     }
 
     /// <summary>
@@ -73,11 +81,13 @@ public class GameManager : MonoBehaviour
     {
         dayNumber++;
         int i = 0;
-        foreach(GameObject file in patientFiles)
+        Transform patientFiles = GameObject.FindGameObjectWithTag("PatientFiles").transform;
+        foreach(Transform file in patientFiles)
         {
             file.GetComponent<DisplayPatientFiles>().Assign(patients[dayNumber][i]);
             ++i;
         }
+        FindObjectOfType<DailyGuidelinesUpdater>().UpdateText(dayNumber);
     }
     void CheckEndOfDay() 
     {
@@ -97,7 +107,7 @@ public class GameManager : MonoBehaviour
                   if (patient.DenialGuideline!=Guidelines.None) rulesbrokenday2++;
               }
           }
-        
+        FindObjectOfType<SceneChanger>().GoToNextScene();
     }
     public void PauseGame()
     {
@@ -114,5 +124,13 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public int GetRulesBroken(int dayNum)
+    {
+        if (dayNum == 0) return rulesbrokenday1;
+        else if (dayNum == 1) return rulesbrokenday2;
+        else if (dayNum == 2) return rulesbrokenday3;
+        return -1;
     }
 }

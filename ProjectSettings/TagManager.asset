@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Approve Bin
+  - PatientFiles
   layers:
   - Default
   - TransparentFX

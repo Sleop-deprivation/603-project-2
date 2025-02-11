@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 345079532}
   - component: {fileID: 345079535}
   - component: {fileID: 345079536}
+  - component: {fileID: 345079537}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -664,6 +665,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2500f866321e0942baec31d500d9ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &345079537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345079531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24f0ea98778bf44c843e90a5e3cd02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &404655935
@@ -995,8 +1008,9 @@ GameObject:
   - component: {fileID: 1285395614}
   - component: {fileID: 1285395613}
   - component: {fileID: 1285395612}
+  - component: {fileID: 1285395615}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Intermission Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,6 +1105,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1285395615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285395610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9278c9c7495b1de4a81ac844fed7de38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayNumberText: {fileID: 1041017356}
+  numInfractionsText: {fileID: 29455675}
+  moneyEarnedText: {fileID: 1856853256}
+  moneyJar: {fileID: 1702793428}
 --- !u!1 &1356507422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1411,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1963682252}
   m_FillRect: {fileID: 404655936}
   m_HandleRect: {fileID: 1963682251}
@@ -1544,7 +1574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963682251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1617,7 +1647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2082791887
 RectTransform:
   m_ObjectHideFlags: 0
