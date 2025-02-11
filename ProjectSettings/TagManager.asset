@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Approve Bin
   layers:
   - Default
   - TransparentFX
@@ -11,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - ApproveBox
+  - DenyBox
+  - InsuranceClaim
   - 
   - 
   - 
@@ -43,4 +44,7 @@ TagManager:
     locked: 0
   - name: Newspaper
     uniqueID: 3875844533
+    locked: 0
+  - name: ClaimBox
+    uniqueID: 2563274021
     locked: 0
