@@ -9,6 +9,8 @@ public class OscillateTextAlpha : MonoBehaviour
     [SerializeField] float oscillationSpeed = 1f;
     TextMeshProUGUI text;
 
+    public float DelayTime { get { return delayTime; } }
+
     void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
