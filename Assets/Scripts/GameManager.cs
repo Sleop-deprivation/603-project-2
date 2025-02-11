@@ -13,6 +13,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
     public List<List<string>> patientstatus = new List<List<string>>();
+
+    private bool isPopupActive;
+    private bool isGamePaused;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject popupBackground;
+    public bool IsPopupActive
+    {
+        get => isPopupActive;
+        set
+        {
+            isPopupActive = value;
+            popupBackground.SetActive(value);
+        }
+    }
+
+    public bool IsGamePaused
+    {
+        get => isGamePaused;
+    }
+
     //Make sure the GameObject remains intact between scenes
     void Awake()
     {
@@ -26,9 +46,24 @@ public class GameManager : MonoBehaviour
            DontDestroyOnLoad(gameObject);
         }
 
+        pauseMenu.SetActive(false);
+        isGamePaused = false;
+
         patients.Add(Day1Patients);
         patients.Add(Day2Patients);
         patients.Add(Day3Patients);
+    }
+
+    private void Update()
+    {
+        // When the escape key is pressed, toggle the game's paused state
+        if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (!isGamePaused)
+                PauseGame();
+            else
+                UnpauseGame();
+        }
     }
 
     /// <summary>
@@ -44,39 +79,40 @@ public class GameManager : MonoBehaviour
             ++i;
         }
     }
-    void CheckEndOfDay() {
-          if (dayNumber==0)
-                {
-                    foreach(SO_PatientFiles patient in Day1Patients) 
-                    {
-
-                    
-                    if (patient.AcceptanceGuideline!=Guidelines.None)
-                    {
-                       rulesbrokenday1++;
-                    }
-                    if (patient.DenialGuideline!=Guidelines.None)
-                    {
-                       rulesbrokenday1++;
-                    }
-                    }
-                }
-                else if (dayNumber==1)
-                {
-                     foreach(SO_PatientFiles patient in Day2Patients) 
-                    {
-                    if (patient.AcceptanceGuideline!=Guidelines.None)
-                    {
-                        rulesbrokenday2++;
-                    }
-                    if (patient.DenialGuideline!=Guidelines.None)
-                    {
-                       rulesbrokenday2++;
-                    }
-                    }
-                }
+    void CheckEndOfDay() 
+    {
+          if (dayNumber == 0)
+          {
+              foreach(SO_PatientFiles patient in Day1Patients) 
+              {
+                  if (patient.AcceptanceGuideline != Guidelines.None) rulesbrokenday1++;
+                  if (patient.DenialGuideline!=Guidelines.None) rulesbrokenday1++;
+              }
+          }
+          else if (dayNumber == 1)
+          {
+              foreach(SO_PatientFiles patient in Day2Patients) 
+              {
+                  if (patient.AcceptanceGuideline!=Guidelines.None) rulesbrokenday2++;
+                  if (patient.DenialGuideline!=Guidelines.None) rulesbrokenday2++;
+              }
+          }
         
     }
-    
+    public void PauseGame()
+    {
+        isGamePaused = true;
+        pauseMenu.SetActive(true);
+    }
 
+    public void UnpauseGame()
+    {
+        isGamePaused = false;
+        pauseMenu.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
