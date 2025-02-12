@@ -27,7 +27,10 @@ public class GameManager : MonoBehaviour
         set
         {
             isPopupActive = value;
-            popupBackground.SetActive(value);
+            if (value)
+                popupBackground.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0.5f);
+            else
+                popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
         }
     }
 
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
 
         if (popupBackground == null)
             popupBackground = GameObject.FindWithTag("PopUpBackground");
-        popupBackground.SetActive(false);
+        popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
     }
 
     private void Update()
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (popupBackground == null)
         {
             popupBackground = GameObject.FindWithTag("PopUpBackground");
-            popupBackground.SetActive(false);
+            popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
         }
     }
     void CheckEndOfDay()
