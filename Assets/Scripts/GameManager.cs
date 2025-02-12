@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour
         patients.Add(Day1Patients);
         patients.Add(Day2Patients);
         patients.Add(Day3Patients);
+
+        if (popupBackground == null)
+            popupBackground = GameObject.FindWithTag("PopUpBackground");
+        popupBackground.SetActive(false);
     }
 
     private void Update()
@@ -92,7 +96,10 @@ public class GameManager : MonoBehaviour
         // The background has to be active in order for this to work, so don't make
         // the popup background inactive in the editor when building please
         if (popupBackground == null)
+        {
             popupBackground = GameObject.FindWithTag("PopUpBackground");
+            popupBackground.SetActive(false);
+        }
     }
     void CheckEndOfDay()
     {

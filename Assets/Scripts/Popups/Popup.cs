@@ -66,8 +66,6 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Ok not all of this code in Update() was my fault, I just did the popup code. Dragging
-        // and stuff was not me and should've been its own script imo - Leo
         // If already submitted just return so player can not interact.
         if (submitted) return;
 
