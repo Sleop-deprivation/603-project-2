@@ -88,6 +88,11 @@ public class GameManager : MonoBehaviour
             ++i;
         }
         FindObjectOfType<DailyGuidelinesUpdater>().UpdateText(dayNumber);
+        // If the reference to the popup background was lost, update its reference.
+        // The background has to be active in order for this to work, so don't make
+        // the popup background inactive in the editor when building please
+        if (popupBackground == null)
+            popupBackground = GameObject.FindWithTag("PopUpBackground");
     }
     void CheckEndOfDay()
     {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Approve Bin
   - PatientFiles
+  - PopUpBackground
   layers:
   - Default
   - TransparentFX
