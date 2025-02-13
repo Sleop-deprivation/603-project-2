@@ -29,6 +29,15 @@
                     "id": "4a1a3df1-9a6f-4133-99af-5fa38f912ea9",
                     "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "SlowTap(duration=0.25)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1f0f83cc-da62-4f60-a947-9a3d01ab4dd9",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 }
@@ -251,6 +260,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa220017-037b-4fac-b502-195132d9bbb9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
