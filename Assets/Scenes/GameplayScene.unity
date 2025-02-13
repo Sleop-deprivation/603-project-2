@@ -1368,7 +1368,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f701a79d21586cc4bb5293291175f05a, type: 2}
   Day3Patients: []
   pauseMenu: {fileID: 1302334581}
-  popupBackground: {fileID: 1529655736}
+  popupBackground: {fileID: 0}
 --- !u!4 &724446773
 Transform:
   m_ObjectHideFlags: 0
@@ -2201,6 +2201,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 814987495}
     m_Modifications:
+    - target: {fileID: 5607949862152795537, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 724446772}
+    - target: {fileID: 5607949862152795537, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6635220057722486332, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -2211,7 +2219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2220,6 +2228,10 @@ PrefabInstance:
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 724446772}
+    - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2227,15 +2239,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToPreviousScene
+      value: UnpauseGame
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneChanger, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915588806995583944, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8212301958860118768, guid: f0e13c0bcc6ca1c42ab6947d36e4a409, type: 3}
       propertyPath: m_Pivot.x
@@ -2880,11 +2896,11 @@ GameObject:
   - component: {fileID: 1529655738}
   m_Layer: 0
   m_Name: PopUpBackground
-  m_TagString: Untagged
+  m_TagString: PopUpBackground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1529655737
 Transform:
   m_ObjectHideFlags: 0
@@ -2940,9 +2956,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0d0f082eab5bbbd408680e0ca92aa232, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
