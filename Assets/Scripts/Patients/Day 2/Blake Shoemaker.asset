@@ -36,11 +36,11 @@ MonoBehaviour:
   IDEyeColor: Hazel
   IDIssueDate: 03/15/2015
   IDExpirationDate: 03/15/2025
-  IsIDFraud: 0
-  IDFraudType: 0
-  IDFraudInput: 
+  IsIDFraud: 1
+  IDFraudType: 1
+  IDFraudInput: Thaddeus Fantano III
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 9
   DenialGuideline: 0

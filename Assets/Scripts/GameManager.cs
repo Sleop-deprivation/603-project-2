@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
         set
         {
             isPopupActive = value;
-            popupBackground.SetActive(value);
+            if (value)
+                popupBackground.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0.5f);
+            else
+                popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
         }
     }
 
@@ -53,6 +56,10 @@ public class GameManager : MonoBehaviour
         patients.Add(Day1Patients);
         patients.Add(Day2Patients);
         patients.Add(Day3Patients);
+
+        if (popupBackground == null)
+            popupBackground = GameObject.FindWithTag("PopUpBackground");
+        popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
     }
 
     private void Update()
@@ -86,6 +93,14 @@ public class GameManager : MonoBehaviour
             ++i;
         }
         FindObjectOfType<DailyGuidelinesUpdater>().UpdateText(dayNumber);
+        // If the reference to the popup background was lost, update its reference.
+        // The background has to be active in order for this to work, so don't make
+        // the popup background inactive in the editor when building please
+        if (popupBackground == null)
+        {
+            popupBackground = GameObject.FindWithTag("PopUpBackground");
+            popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
+        }
     }
 
     bool CheckForAllPatientsStamped()
