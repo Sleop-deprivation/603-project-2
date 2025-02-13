@@ -110,13 +110,11 @@ public class Popup : MonoBehaviour
                         {
                             submitted = true;
                             transform.position = results[0].transform.position;
-                            gameManager.FilesTurnedIn++;
                         }
                         if ((results[0].name == "Denied Bin") && !bApproved)
                         {
                             submitted = true;
                             transform.position = results[0].transform.position;
-                            gameManager.FilesTurnedIn++;
                         }
                     }
                 }

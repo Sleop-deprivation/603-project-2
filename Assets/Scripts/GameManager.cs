@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
-    public List<List<string>> patientstatus = new List<List<string>>();
+    //public List<List<string>> patientstatus = new List<List<string>>();
 
     private bool isPopupActive;
     private bool isGamePaused;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject popupBackground;
 
-    int filesTurnedIn;
-    public int FilesTurnedIn { get { return filesTurnedIn; } set { filesTurnedIn = value; } }
     public bool IsPopupActive
     {
         get => isPopupActive;
@@ -67,10 +65,10 @@ public class GameManager : MonoBehaviour
             else
                 UnpauseGame();
         }
-        if(filesTurnedIn == 10)
+        // Continuously check patient files to see if they are all stamped
+        if(CheckForAllPatientsStamped())
         {
-            filesTurnedIn = 0;
-            CheckEndOfDay();
+            // Display End Day Button
         }
     }
 
@@ -89,7 +87,40 @@ public class GameManager : MonoBehaviour
         }
         FindObjectOfType<DailyGuidelinesUpdater>().UpdateText(dayNumber);
     }
-    void CheckEndOfDay()
+
+    bool CheckForAllPatientsStamped()
+    {
+        if (dayNumber == 0)
+        {
+            int count = 0;
+            foreach(SO_PatientFiles patient in Day1Patients)
+            {
+                if (patient.IsStamped) count++;
+                if (count == Day1Patients.Length) return true;
+            }
+        }
+        else if (dayNumber == 1)
+        {
+            int count = 0;
+            foreach (SO_PatientFiles patient in Day2Patients)
+            {
+                if (patient.IsStamped) count++;
+                if (count == Day2Patients.Length) return true;
+            }
+        }
+        /*else if (dayNumber == 2)
+        {
+            int count = 0;
+            foreach (SO_PatientFiles patient in Day3Patients)
+            {
+                if (patient.IsStamped) count++;
+                if (count == Day3Patients.Length) return true;
+            }
+        }*/
+        return false;
+    }
+
+    public void CheckEndOfDay()
     {
         if (dayNumber == 0)
         {
@@ -109,6 +140,15 @@ public class GameManager : MonoBehaviour
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday2++;
             }
         }
+        /*else if (dayNumber == 2)
+        {
+            foreach (SO_PatientFiles patient in Day3Patients)
+            {
+                GetComponent<DataTracking>().RecordData(patient);
+                if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) rulesbrokenday3++;
+                if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday3++;
+            }
+        }*/
         FindObjectOfType<SceneChanger>().GoToNextScene();
     }
     public void PauseGame()

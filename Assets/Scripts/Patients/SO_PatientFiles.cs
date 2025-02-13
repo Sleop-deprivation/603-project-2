@@ -9,6 +9,7 @@ public class SO_PatientFiles : ScriptableObject
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 
     public bool IsDenied;
+    public bool IsStamped;
     public Image picture;
 
     // Patient Information
