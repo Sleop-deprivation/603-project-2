@@ -20,18 +20,7 @@ public class PauseMenu : MonoBehaviour
     {
         // When the escape key is pressed, toggle the game's paused state
         if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            if (!gameManager.IsGamePaused)
-            {
-                ShowMenu();
-                gameManager.PauseGame();
-            }
-            else
-            {
-                HideMenu();
-                gameManager.UnpauseGame();
-            }
-        }
+            OnPauseButtonClick();
     }
 
     public void HideMenu()
@@ -44,5 +33,19 @@ public class PauseMenu : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f);
         canvas.SetActive(true);
+    }
+
+    public void OnPauseButtonClick()
+    {
+        if (!gameManager.IsGamePaused)
+        {
+            ShowMenu();
+            gameManager.PauseGame();
+        }
+        else
+        {
+            HideMenu();
+            gameManager.UnpauseGame();
+        }
     }
 }
