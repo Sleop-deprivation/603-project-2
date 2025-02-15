@@ -31,6 +31,7 @@ public class Stamp : MonoBehaviour
 
     public void StampApprove(bool bApproved)
     {
+        patient.IsStamped = true;
         if (bApproved)
         {
             // Set stamp to approved

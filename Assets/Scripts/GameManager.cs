@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
+    GameObject Clockout;
     //public List<List<string>> patientstatus = new List<List<string>>();
 
     private bool isPopupActive;
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
         if (popupBackground == null)
             popupBackground = GameObject.FindWithTag("PopUpBackground");
         popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
+
+        Clockout = GameObject.FindWithTag("Clockout");
+        Clockout.SetActive(false);
     }
 
     private void Update()
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour
         if(CheckForAllPatientsStamped())
         {
             // Display End Day Button
+            Clockout.SetActive(true);
         }
     }
 

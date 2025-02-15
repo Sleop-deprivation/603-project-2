@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 2609215300045752478}
   - component: {fileID: 2963525609302813121}
   - component: {fileID: 4179658970085950655}
-  - component: {fileID: 5397593729568995121}
   m_Layer: 0
   m_Name: Patient File
   m_TagString: Untagged
@@ -444,36 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69007bb2e0d803649a4d0b8f4ff4c95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5397593729568995121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66379692010483652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 49c7a0c56d04f2046bbab0631e6f9615, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &333035560806721082
 GameObject:
   m_ObjectHideFlags: 0

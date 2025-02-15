@@ -37,10 +37,6 @@ public class GrabStamp : MonoBehaviour
         {
             // Mark the popup as being grabbed
             transform.position = mousePos;
-
-            // Set high priority sorting order when grabbed
-            spriteRenderer.sortingOrder = 11;
-
         }
     }
 }

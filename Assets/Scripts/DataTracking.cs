@@ -5,14 +5,18 @@ using System.IO;
 using System;
 public class DataTracking : MonoBehaviour
 {
+    /// <summary>
+    /// Records DayNumber, Name, Denial/Acceptance Status, and the Guideline that the player breaks for each patient. 
+    /// If no guideline was broken, then "None" is recorded. 
+    /// Data is recorded to "{Drive}:\Users\{user}\AppData\LocalLow\DefaultCompany\603_Project_2.csv"
+    /// </summary>
+    /// <param name="patient"></param>
     public void RecordData(SO_PatientFiles patient)
     {
-        print("Tracking data...");
-        // Record the infraction if there is one
         string guideLine;
-        // If there is a penalty for accepting, and the patient is accepted... 
+        // If there is a penalty for accepting the patient, and the patient is accepted... 
         if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) guideLine = patient.AcceptanceGuideline.ToString();
-        // If there is a penalty for denying, and the patient is denied... 
+        // If there is a penalty for denying the patient, and the patient is denied... 
         else if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) guideLine = patient.DenialGuideline.ToString();
         else guideLine = "None";
 

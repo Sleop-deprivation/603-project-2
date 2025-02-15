@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// This script allows for a prompt to show after a specific amount of delay time, and for the text to oscillate in opacity. 
+/// </summary>
 public class OscillateTextAlpha : MonoBehaviour
 {
     [SerializeField] float delayTime = 0f;
