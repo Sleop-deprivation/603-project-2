@@ -4215,6 +4215,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Approve Stamp
       objectReference: {fileID: 0}
+    - target: {fileID: 8322506908993448423, guid: cd1c1fff4ba773744bb10f7b6b042d31, type: 3}
+      propertyPath: ApproveStamp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322506908993448423, guid: cd1c1fff4ba773744bb10f7b6b042d31, type: 3}
+      propertyPath: approveStamp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

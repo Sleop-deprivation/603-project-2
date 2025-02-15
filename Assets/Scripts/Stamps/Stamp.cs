@@ -25,8 +25,7 @@ public class Stamp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // dont know why this is in update?
-        //gameManager = GameObject.Find("GameManager");
+        
     }
 
     public void StampApprove(bool bApproved)
