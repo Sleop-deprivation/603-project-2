@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 0
-  oscillationSpeed: 2
+  oscillationSpeed: 2.5
 --- !u!1 &724446771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d156dfccbe2c15d47b23dce3f9bd77ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oscillationSpeed: 2
+  oscillationSpeed: 2.5
 --- !u!1 &1616273778
 GameObject:
   m_ObjectHideFlags: 0

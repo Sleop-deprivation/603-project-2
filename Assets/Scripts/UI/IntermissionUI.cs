@@ -20,10 +20,11 @@ public class IntermissionUI : MonoBehaviour
         int moneyEarned = (300 - (numInfractions * 20));
         int totalMoney = FindObjectOfType<GameManager>().money + moneyEarned;
         dayNumberText.text = $"Day {dayNumber + 1} Complete!";
-        numInfractionsText.text = $"Infractions: {numInfractions}, -$20 deducted per infraction...";
-        moneyEarnedText.text = "Money Earned Today: $" + moneyEarned.ToString();
+        numInfractionsText.text = $"Infractions: {numInfractions}";
+        if(numInfractions == 0) moneyEarnedText.text = "Money Earned Today: $" + moneyEarned.ToString();
+        else moneyEarnedText.text = $"Money Earned Today: ${moneyEarned}, with -${20 * numInfractions} deducted due to infractions.";
         totalMoneyText.text = "Total Money: $" + totalMoney.ToString();
-        moneyJar.value = totalMoney / 750f;
+        moneyJar.value = totalMoney / 900f;
 
         FindObjectOfType<GameManager>().money += moneyEarned;
     }
