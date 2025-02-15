@@ -11,13 +11,23 @@ public class GrabStamp : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     // Whether or not this has been grabbed
     public bool isGrabbed;
+    // A reference to the GameManager.
+    private GameManager gameManager;
+    // approve or deny stamp
+    [SerializeField] bool approveStamp;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         stampCol = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         isGrabbed = false;
+
+        if (this.name == "Approve Stamp")
+            approveStamp = true;
+        else
+            approveStamp = false;
     }
 
     // Update is called once per frame
@@ -27,11 +37,33 @@ public class GrabStamp : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            if (gameManager.IsPopupActive && (gameManager.PopupActive != null) && isGrabbed)
+            {
+                gameManager.PopupActive.ApproveDeny(approveStamp);
+            }
+        }
+
         // When the mouse is right clicked while this popup is being hovered over:
-        if (Mouse.current.rightButton.wasPressedThisFrame)
-            if (stampCol.OverlapPoint(mousePos))
-                // Makes it so player can drag until they click again
-                isGrabbed = !isGrabbed;
+        if (Mouse.current.leftButton.isPressed)
+        {
+            if (!gameManager.IsGrabbing || isGrabbed)
+            {
+                if (stampCol.OverlapPoint(mousePos))
+                {
+                    // Makes it so player can drag until they click again
+                    isGrabbed = true;
+                    gameManager.IsGrabbing = true;
+                }
+            }
+        }
+        else
+        {
+            isGrabbed = false;
+            gameManager.IsGrabbing = false;
+        }
+
 
         if (isGrabbed)
         {
@@ -40,7 +72,20 @@ public class GrabStamp : MonoBehaviour
 
             // Set high priority sorting order when grabbed
             spriteRenderer.sortingOrder = 11;
-
         }
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        Debug.Log("clicked");
+        if (!context.started)
+            return;
+
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        if (stampCol.OverlapPoint(mousePos))
+            // Makes it so player can drag until they click again
+            isGrabbed = !isGrabbed;
     }
 }
