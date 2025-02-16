@@ -198,8 +198,6 @@ public class Popup : MonoBehaviour
         // Temp code until GameManager (hopefully) includes a way to detect the current mouse position
         Vector2 mousePos = Mouse.current.position.ReadValue();
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
         GetComponentInChildren<Stamp>().StampApprove(status);
-        gameManager.FilesTurnedIn++;
     }
 }

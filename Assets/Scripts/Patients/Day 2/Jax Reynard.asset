@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Jax Reynard
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 2
   FullName: Jax Reynard
   DOB: 2/16/1987
   MaritalStatus: Married
   Address: 1412 Forest Avenue, New York, NY 10046
-  Gender: 0
+  Gender: 2
   IsEmployed: 1
   HasDependents: 0
   Income: 77k
@@ -44,3 +45,6 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 4
   DenialGuideline: 0
+  Newspaper: Last night, Jax Reynard took his own life away. After being unable to
+    afford treating the pain from his Lateral Epicondytis, he decided that it was
+    too much to bear.

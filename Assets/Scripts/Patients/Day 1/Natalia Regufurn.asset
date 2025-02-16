@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Timothy Rumsfelt
+  m_Name: Natalia Regufurn
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 1
-  FullName: Timothy Rumsfelt
-  DOB: 8/3/2002
+  FullName: Natalia Regufurn
+  DOB: 8/10/1977
   MaritalStatus: Single
-  Address: 79 Rockville Ave. Auburn, NY 13021
-  Gender: 0
+  Address: 704 E Broadway, New York, NY 11365
+  Gender: 1
   IsEmployed: 1
   HasDependents: 0
-  Income: 45k
-  Conditions: Asthma
-  FamilyHistory: Schizophrenia
-  Claim: 'Broken Left Femur: ER visit, Cast, Pain Relief'
+  Income: 54k
+  Conditions: N/A
+  FamilyHistory: N/A
+  Claim: 'Cardiac Arrest: ER visit'
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 6'1"
-  IDEyeColor: Blue
-  IDIssueDate: 8/3/2020
-  IDExpirationDate: 8/3/2026
+  IDHeight: 5'3"
+  IDEyeColor: Brown
+  IDIssueDate: 8/25/15
+  IDExpirationDate: 8/25/25
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 0
+  Newspaper: Natalia Regufum passed away of a heart attack last night. After her
+    last visit to the ER relating to her heart issues, she was left with horrible
+    debt, and decided to not go to the ER again during her last scare. Her heart
+    stopped and without medical equipment, there was no restarting it.

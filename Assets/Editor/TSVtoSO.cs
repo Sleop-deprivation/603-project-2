@@ -57,6 +57,8 @@ public class TSVtoSO
             patient.AcceptanceGuideline = System.Enum.Parse<Guidelines>(splitData[29]);
             patient.DenialGuideline = System.Enum.Parse<Guidelines>(splitData[30]);
 
+            patient.Newspaper = splitData[31];
+
             AssetDatabase.CreateAsset(patient, $"Assets/Scripts/Patients/{patient.DayNumber}/{patient.FullName}.asset");
         }
         AssetDatabase.SaveAssets();

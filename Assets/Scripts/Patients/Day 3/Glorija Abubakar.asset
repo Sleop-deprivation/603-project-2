@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Glorija Abubakar
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
-  DayNumber: Day 2
+  DayNumber: Day 3
   FullName: Glorija Abubakar
   DOB: 7/27/2009
   MaritalStatus: Single
@@ -22,7 +23,7 @@ MonoBehaviour:
   Gender: 1
   IsEmployed: 0
   HasDependents: 1
-  Income: 45k
+  Income: N/A
   Conditions: N/A
   FamilyHistory: Heart Disease
   Claim: Yearly Pediatric Checkup
@@ -42,5 +43,10 @@ MonoBehaviour:
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 5
   DenialGuideline: 0
+  Newspaper: 'Single mom Glorija Abubakar has her kid''s yearly pedriatic checkup
+    denied by local insurance company: "I''m really concerned... Heart disease runs
+    in my family and I''d like to find out as early as possible if my kid has something
+    wrong with them... I''m unemployed so there''s no way I can afford this without
+    insurance."'

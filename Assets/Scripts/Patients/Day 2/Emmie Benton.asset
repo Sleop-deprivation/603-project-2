@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Sara L. Frias
+  m_Name: Emmie Benton
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 2
-  FullName: Sara L. Frias
-  DOB: 10/27/2000
+  FullName: Emmie Benton
+  DOB: 9/18/1998
   MaritalStatus: Single
-  Address: 4557 House Rd, Shallow Shores, NY 39201
+  Address: 124 E Main St, Patchogue NY 11772
   Gender: 1
-  IsEmployed: 0
+  IsEmployed: 1
   HasDependents: 0
-  Income: 50k
-  Conditions: OCD
-  FamilyHistory: Marphan Syndrome
-  Claim: Liver Biopsy, MRI
-  HasGoldCard: 1
-  GCIssueDate: 9/10/2023
-  GCExpirationDate: 9/10/2027
+  Income: 33k
+  Conditions: N/A
+  FamilyHistory: Huntington's disease
+  Claim: 'Food Poisoning: ER visit, IV & antibiotics.'
+  HasGoldCard: 0
+  GCIssueDate: 
+  GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 4'11"
-  IDEyeColor: Blue
-  IDIssueDate: 12/10/2020
-  IDExpirationDate: 12/10/2030
+  IDHeight: 5'6"
+  IDEyeColor: Green
+  IDIssueDate: 9/31/2020
+  IDExpirationDate: 9/31/2028
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
@@ -43,4 +44,6 @@ MonoBehaviour:
   OfferingBribe: 0
   BribeAmount: 
   AcceptanceGuideline: 0
-  DenialGuideline: 1
+  DenialGuideline: 0
+  Newspaper: 27-year-old Emmie Benton found dead due to severe dehydration, after
+    a bad case of food poisoning.

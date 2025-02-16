@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Electra Dovas
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
+  DayNumber: Day 3
   FullName: Electra Dovas
   DOB: 11/06/1959
   MaritalStatus: Married
@@ -44,3 +45,6 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 1
+  Newspaper: 'Electra Dovas will be suing the local insurance company for denying
+    her insurance claim despite being a Golden Insurance Card holder. She would like
+    to remind everyone that Anti-Aging procedures should be a protected right. '

@@ -10,37 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Ophelia Morris
+  m_Name: Florence Ulrich
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
-  DayNumber: Day 1
-  FullName: Ophelia Morris
-  DOB: 3/2/1961
+  DayNumber: Day 3
+  FullName: Florence Ulrich
+  DOB: 3/18/1990
   MaritalStatus: Married
-  Address: 34 Norridge Avenue, New York , NY 10007
+  Address: 20 Elmo St, New York, NY 10010
   Gender: 1
   IsEmployed: 1
-  HasDependents: 0
-  Income: 39k
-  Conditions: N/A
-  FamilyHistory: Pancreatitis
-  Claim: 'Pancreatitis: Electrolyte replacements and Surgery'
+  HasDependents: 1
+  Income: 90k
+  Conditions: Ankle Fracture
+  FamilyHistory: Low Bone Density
+  Claim: 'Ankle Fracture: Cast and Pain Medication'
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 5'6"
-  IDEyeColor: Blue
-  IDIssueDate: 9/8/2020
-  IDExpirationDate: 9/8/2025
+  IDHeight: 5'8"
+  IDEyeColor: Brown
+  IDIssueDate: 4/5/2018
+  IDExpirationDate: 4/5/2028
   IsIDFraud: 0
   IDFraudType: 0
   IDFraudInput: 
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 0
+  AcceptanceGuideline: 7
   DenialGuideline: 0
+  Newspaper: 'Florence Ulrich outraged about being denied a new cast and medication
+    for her ankle fracture: "What am I supposed to do? Be in pain and unable to remove
+    this stupid old cast?"'

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: James Padilla
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 1
   FullName: James Padilla
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 1
+  Newspaper: James Padilla would like to share the news with the community that he
+    does not have diabetes! However, after getting denied for his insurance claim,
+    he will be suing the local insurance company and unsubscribe from their Golden
+    Insurance Card program.

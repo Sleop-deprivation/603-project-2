@@ -51,4 +51,7 @@ public class SO_PatientFiles : ScriptableObject
     // Guidelines Information
     public Guidelines AcceptanceGuideline;
     public Guidelines DenialGuideline;
+
+    // Newspaper Information
+    public string Newspaper;
 }

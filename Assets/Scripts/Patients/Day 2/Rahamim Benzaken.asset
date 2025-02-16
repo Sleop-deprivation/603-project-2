@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Rahamim Benzaken
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 2
   FullName: Rahamim Benzaken
@@ -44,3 +45,5 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 0
+  Newspaper: 'Rahamim Benzaken is disilusioned to find out his back brace replacement
+    has been denied by his local insurance company, seemingly for no reason at all. '

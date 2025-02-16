@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Doug Hutchins
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 1
   FullName: Doug Hutchins
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 0
+  Newspaper: 'Doug Hutchins, husband and father, passed away last night. After his
+    insurance claim was denied, he was unable to get the anticonvulsants he needed.
+    Witnesses to the accident say he had a muscle spasm and fell down the stairs
+    on his way out of the hospital. '

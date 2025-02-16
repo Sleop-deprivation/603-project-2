@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Florence Ulrich
+  m_Name: Blake Shoemaker
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
-  DayNumber: Day 2
-  FullName: Florence Ulrich
-  DOB: 3/18/1990
+  DayNumber: Day 3
+  FullName: Blake Shoemaker
+  DOB: 3/15/1997
   MaritalStatus: Single
-  Address: 20 Elmo St, New York, NY 10010
-  Gender: 1
+  Address: 37 Main Street, Sandusky, OH 43351
+  Gender: 2
   IsEmployed: 1
   HasDependents: 0
-  Income: 90k
-  Conditions: Ankle Fracture
-  FamilyHistory: Low Bone Density
-  Claim: 'Ankle Fracture: Cast and Pain Medication'
+  Income: 40k
+  Conditions: N/A
+  FamilyHistory: Alcoholism
+  Claim: Liver Transplant
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
@@ -33,14 +34,17 @@ MonoBehaviour:
   GCFraudType: 0
   GCFraudInput: 
   IDHeight: 5'8"
-  IDEyeColor: Brown
-  IDIssueDate: 4/5/2018
-  IDExpirationDate: 4/5/2028
-  IsIDFraud: 0
-  IDFraudType: 0
-  IDFraudInput: 
+  IDEyeColor: Hazel
+  IDIssueDate: 03/15/2015
+  IDExpirationDate: 03/15/2025
+  IsIDFraud: 1
+  IDFraudType: 1
+  IDFraudInput: Thaddeus Fantano III
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 3
+  AcceptanceGuideline: 9
   DenialGuideline: 0
+  Newspaper: 'Blake Shoemaker has been denied a liver transplant for being mid-process
+    of changing names in their ID: "All I wanted was to get rid of the stupid name
+    my parents gave me... I can''t believe this will cost me my life."'

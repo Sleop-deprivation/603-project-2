@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Casandra Giovana
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 2
   FullName: Casandra Giovana
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 3
   DenialGuideline: 0
+  Newspaper: 'Cassandre Giovana, a wonderful member of our community, has reported
+    they''ll be suing the local insurance company for denying her refill of insulin.
+    She states: "Are they crazy? I''m a diabetic... I will die without insulin! Absolutely
+    ridiculous!"'

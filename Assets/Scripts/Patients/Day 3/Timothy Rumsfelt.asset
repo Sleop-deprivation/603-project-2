@@ -10,37 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c147d7224158f314eb0fade897bab1a0, type: 3}
-  m_Name: Steven Giovana
+  m_Name: Timothy Rumsfelt
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
-  DayNumber: Day 2
-  FullName: Steven Giovana
-  DOB: 2/27/2005
+  DayNumber: Day 3
+  FullName: Timothy Rumsfelt
+  DOB: 8/3/2002
   MaritalStatus: Single
-  Address: 8531 Second Lane New York, NY 10009
+  Address: 79 Rockville Ave. Auburn, NY 13021
   Gender: 0
   IsEmployed: 1
   HasDependents: 0
-  Income: 68k
-  Conditions: N/A
-  FamilyHistory: Diabetes
-  Claim: Antibiotics for Tuberculosis
+  Income: 25k
+  Conditions: Asthma
+  FamilyHistory: Schizophrenia
+  Claim: 'Broken Left Femur: ER visit, Cast, Pain Relief'
   HasGoldCard: 0
   GCIssueDate: 
   GCExpirationDate: 
   IsGCFraud: 0
   GCFraudType: 0
   GCFraudInput: 
-  IDHeight: 6'0"
-  IDEyeColor: Brown
-  IDIssueDate: 2/26/2024
-  IDExpirationDate: 2/26/2034
-  IsIDFraud: 1
-  IDFraudType: 4
-  IDFraudInput: 51 West Harvard Street New York, NY 10016
+  IDHeight: 6'1"
+  IDEyeColor: Blue
+  IDIssueDate: 8/3/2020
+  IDExpirationDate: 8/3/2026
+  IsIDFraud: 0
+  IDFraudType: 0
+  IDFraudInput: 
   PatientNote: 
   OfferingBribe: 0
   BribeAmount: 
-  AcceptanceGuideline: 9
+  AcceptanceGuideline: 6
   DenialGuideline: 0
+  Newspaper: 'Timothy Rumsfelt gets denied insurance on the basis of having too low
+    of an income: "What am I supposed to do? How am I supposed to pay for this with
+    no insurance?"'

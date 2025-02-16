@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Alex Wyndsor
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 1
   FullName: Alex Wyndsor
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 0
   DenialGuideline: 0
+  Newspaper: 'Young Alex Wyndsor, only 24 years old, has passed away. After their
+    insurance claim was denied, they weren''t able to get the cast for their broken
+    wrist changed in time. The old cast grew dirty, caused an infection, and poor
+    Alex died of sepsis. '

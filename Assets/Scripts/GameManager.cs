@@ -18,12 +18,10 @@ public class GameManager : MonoBehaviour
     private bool isPopupActive;
     private bool isGrabbing;
     private bool isGamePaused;
-    [SerializeField] private GameObject popupBackground;
+    private GameObject popupBackground;
 
     private Popup popupActive;
 
-    int filesTurnedIn;
-    public int FilesTurnedIn { get { return filesTurnedIn; } set { filesTurnedIn = value; } }
     public bool IsPopupActive
     {
         get => isPopupActive;
@@ -110,8 +108,8 @@ public class GameManager : MonoBehaviour
         Transform patientFiles = GameObject.FindGameObjectWithTag("PatientFiles").transform;
         foreach(Transform file in patientFiles)
         {
-            file.GetComponent<DisplayPatientFiles>().Assign(patients[dayNumber][i]);
-            ++i;
+            if (i >= patients[dayNumber].Length) { file.gameObject.SetActive(false); }
+            else { file.GetComponent<DisplayPatientFiles>().Assign(patients[dayNumber][i]); ++i; }
         }
         FindObjectOfType<DailyGuidelinesUpdater>().UpdateText(dayNumber);
         // If the reference to the popup background was lost, update its reference.
@@ -121,6 +119,11 @@ public class GameManager : MonoBehaviour
         {
             popupBackground = GameObject.FindWithTag("PopUpBackground");
             popupBackground.GetComponent<SpriteRenderer>().color = Color.clear;
+        }
+        if(Clockout == null)
+        {
+            Clockout = GameObject.FindWithTag("Clockout");
+            Clockout.SetActive(false);
         }
     }
 
@@ -144,7 +147,7 @@ public class GameManager : MonoBehaviour
                 if (count == Day2Patients.Length) return true;
             }
         }
-        /*else if (dayNumber == 2)
+        else if (dayNumber == 2)
         {
             int count = 0;
             foreach (SO_PatientFiles patient in Day3Patients)
@@ -152,7 +155,7 @@ public class GameManager : MonoBehaviour
                 if (patient.IsStamped) count++;
                 if (count == Day3Patients.Length) return true;
             }
-        }*/
+        }
         return false;
     }
 
@@ -176,7 +179,7 @@ public class GameManager : MonoBehaviour
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday2++;
             }
         }
-        /*else if (dayNumber == 2)
+        else if (dayNumber == 2)
         {
             foreach (SO_PatientFiles patient in Day3Patients)
             {
@@ -184,7 +187,7 @@ public class GameManager : MonoBehaviour
                 if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) rulesbrokenday3++;
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday3++;
             }
-        }*/
+        }
         FindObjectOfType<SceneChanger>().GoToNextScene();
     }
     public void PauseGame()

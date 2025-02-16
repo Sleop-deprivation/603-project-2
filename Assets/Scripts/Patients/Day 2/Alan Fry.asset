@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Alan Fry
   m_EditorClassIdentifier: 
   IsDenied: 0
+  IsStamped: 0
   picture: {fileID: 0}
   DayNumber: Day 2
   FullName: Alan Fry
@@ -44,3 +45,7 @@ MonoBehaviour:
   BribeAmount: 
   AcceptanceGuideline: 9
   DenialGuideline: 0
+  Newspaper: Alan Fry celebrates his marriage by getting denied by our local insurance
+    company. After taking his husband's last name, he was in the process of changing
+    legal documents to have this updated information. This seemed enough for the
+    insurance company to deny him the medical help he needs.
