@@ -94,8 +94,16 @@ public class GameManager : MonoBehaviour
         if(CheckForAllPatientsStamped())
         {
             // Display End Day Button
-            Clockout.SetActive(true);
+            if(Clockout != null) Clockout.SetActive(true);
         }
+    }
+
+    // Reset Serialized Objects when the game ends
+    private void OnDisable()
+    {
+        foreach(SO_PatientFiles patient in Day1Patients) { patient.IsDenied = false; patient.IsStamped = false; }
+        foreach (SO_PatientFiles patient in Day2Patients) { patient.IsDenied = false; patient.IsStamped = false; }
+        foreach (SO_PatientFiles patient in Day3Patients) { patient.IsDenied = false; patient.IsStamped = false; }
     }
 
     /// <summary>
@@ -123,7 +131,6 @@ public class GameManager : MonoBehaviour
         if(Clockout == null)
         {
             Clockout = GameObject.FindWithTag("Clockout");
-            Clockout.SetActive(false);
         }
     }
 
@@ -188,7 +195,7 @@ public class GameManager : MonoBehaviour
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday3++;
             }
         }
-        FindObjectOfType<SceneChanger>().GoToNextScene();
+        GetComponent<SceneChanger>().GoToNextScene();
     }
     public void PauseGame()
     {
