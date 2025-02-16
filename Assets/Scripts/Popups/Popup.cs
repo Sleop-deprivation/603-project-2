@@ -83,10 +83,23 @@ public class Popup : MonoBehaviour
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 // When the mouse is right clicked while this popup is being hovered over:
-                if (Mouse.current.rightButton.wasPressedThisFrame && !isClipped)
-                    if (popupCollider.OverlapPoint(mousePos))
-                        // Makes it so player can drag until they click again
-                        isGrabbed = !isGrabbed;
+                if (Mouse.current.leftButton.isPressed)
+                {
+                    if (!gameManager.IsGrabbing || isGrabbed)
+                    {
+                        if (popupCollider.OverlapPoint(mousePos))
+                        {
+                            // Makes it so player can drag until they click again
+                            isGrabbed = true;
+                            gameManager.IsGrabbing = true;
+                        }
+                    }
+                }
+                else
+                {
+                    isGrabbed = false;
+                    gameManager.IsGrabbing = false;
+                }
 
                 if (isGrabbed)
                 {
@@ -128,7 +141,7 @@ public class Popup : MonoBehaviour
                         if (spriteRenderer.color != Color.green) spriteRenderer.color = Color.green;
 
                         // When the mouse is clicked while this popup is being hovered over:
-                        if (Mouse.current.leftButton.wasPressedThisFrame)
+                        if (Mouse.current.rightButton.wasPressedThisFrame)
                         {
                             // Mark the popup as in focus
                             inFocus = true;
@@ -145,6 +158,9 @@ public class Popup : MonoBehaviour
                             // Set high priority sorting order when focused
                             spriteRenderer.sortingOrder = 5;
                             gameManager.IsPopupActive = true;
+
+                            // Tell stamps this one is active
+                            gameManager.PopupActive = this;
                         }
                     }
                     else if (spriteRenderer.color != Color.white) spriteRenderer.color = Color.white;
@@ -156,12 +172,12 @@ public class Popup : MonoBehaviour
         // and return it to its original position only when no stamp is held
         else
         {
-            // if left click while approve is grabbed approve
-            if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(true);
-            // if left click while deny is grabbed deny
-            if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(false);
+            //// if left click while approve is grabbed approve
+            //if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(true);
+            //// if left click while deny is grabbed deny
+            //if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(false);
 
-            if (Mouse.current.leftButton.wasPressedThisFrame && (!approveStamp.GetComponent<GrabStamp>().isGrabbed && !denyStamp.GetComponent<GrabStamp>().isGrabbed))
+            if (Mouse.current.rightButton.wasPressedThisFrame)
             {
                 inFocus = false;
                 transform.position = preFocusTransform.Pos;
@@ -169,7 +185,21 @@ public class Popup : MonoBehaviour
                 transform.localScale = preFocusTransform.Scale;
                 spriteRenderer.sortingOrder = 0;
                 gameManager.IsPopupActive = false;
+                gameManager.PopupActive = null;
             }
         }
+    }
+
+    public void ApproveDeny(bool status)
+    {
+        if (!InFocus)
+            return;
+
+        // Temp code until GameManager (hopefully) includes a way to detect the current mouse position
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        GetComponentInChildren<Stamp>().StampApprove(status);
+        gameManager.FilesTurnedIn++;
     }
 }

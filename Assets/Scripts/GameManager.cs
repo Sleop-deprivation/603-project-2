@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour
     //public List<List<string>> patientstatus = new List<List<string>>();
 
     private bool isPopupActive;
+    private bool isGrabbing;
     private bool isGamePaused;
-    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject popupBackground;
 
+    private Popup popupActive;
+
+    int filesTurnedIn;
+    public int FilesTurnedIn { get { return filesTurnedIn; } set { filesTurnedIn = value; } }
     public bool IsPopupActive
     {
         get => isPopupActive;
@@ -38,6 +42,18 @@ public class GameManager : MonoBehaviour
         get => isGamePaused;
     }
 
+    public bool IsGrabbing
+    {
+        get => isGrabbing;
+        set { isGrabbing = value; }
+    }
+
+    public Popup PopupActive
+    {
+        get => popupActive;
+        set { popupActive = value; }
+    }
+
     //Make sure the GameObject remains intact between scenes
     void Awake()
     {
@@ -51,8 +67,8 @@ public class GameManager : MonoBehaviour
            DontDestroyOnLoad(gameObject);
         }
 
-        pauseMenu.SetActive(false);
         isGamePaused = false;
+        isGrabbing = false;
 
         patients.Add(Day1Patients);
         patients.Add(Day2Patients);
@@ -174,13 +190,11 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         isGamePaused = true;
-        pauseMenu.SetActive(true);
     }
 
     public void UnpauseGame()
     {
         isGamePaused = false;
-        pauseMenu.SetActive(false);
     }
 
     public void QuitGame()
