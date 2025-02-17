@@ -9,10 +9,8 @@ public class Popup : MonoBehaviour
     // ~~~ FIELDS ~~~
     // Whether or not the popup is in focus or not.
     private bool inFocus;
-    // Whether or not the popup has been submitted
-    private bool submitted;
     // Whether or not the popup has been grabbed
-    private bool isGrabbed;
+    //private bool isGrabbed;
     // Reference to Approve stamp
     private GameObject approveStamp;
     // Reference to Approve stamp
@@ -32,15 +30,6 @@ public class Popup : MonoBehaviour
 
     [SerializeField] bool isClipped;
 
-    // ~~~ PROPERTIES ~~~
-    /// <summary>
-    /// Public getter/setter for the popup's sprite.
-    /// </summary>
-    public Sprite Texture
-    {
-        get { return spriteRenderer.sprite; }
-        set { spriteRenderer.sprite = value; }
-    }
     public bool InFocus { get { return inFocus; } }
 
 
@@ -56,8 +45,7 @@ public class Popup : MonoBehaviour
             inFocusTransform.SetComponents(Vector2.zero, Quaternion.Euler(0, 0, 0), Vector2.one);
         }
         gameManager = FindFirstObjectByType<GameManager>();
-        submitted = false;
-        isGrabbed = false;
+        //isGrabbed = false;
         approveStamp = GameObject.Find("Approve Stamp");
         denyStamp = GameObject.Find("Deny Stamp");
         bApproved = false;
@@ -66,11 +54,8 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If already submitted just return so player can not interact.
-        if (submitted) return;
-
         // If highlighted and stamp NOT selected just return so player can not interact.
-        if (!inFocus && (approveStamp.GetComponent<GrabStamp>().isGrabbed || denyStamp.GetComponent<GrabStamp>().isGrabbed)) return;
+        if (approveStamp.GetComponent<GrabStamp>().isGrabbed || denyStamp.GetComponent<GrabStamp>().isGrabbed) return;
 
         // If not in-focus and while no other popups are active, check to see if the mouse is hovering the object
         if (!inFocus)
@@ -82,57 +67,19 @@ public class Popup : MonoBehaviour
                 Vector2 mousePos = Mouse.current.position.ReadValue();
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-                // When the mouse is right clicked while this popup is being hovered over:
-                if (Mouse.current.leftButton.isPressed)
-                {
-                    if (!gameManager.IsGrabbing || isGrabbed)
-                    {
-                        if (popupCollider.OverlapPoint(mousePos))
-                        {
-                            // Makes it so player can drag until they click again
-                            isGrabbed = true;
-                            gameManager.IsGrabbing = true;
-                        }
-                    }
-                }
-                else
-                {
-                    isGrabbed = false;
-                    gameManager.IsGrabbing = false;
-                }
+                // When holding LMB
+                //if (popupCollider.OverlapPoint(mousePos) && Input.GetMouseButton(0) && !isClipped) StartCoroutine(CheckForHoldStatus());
 
-                if (isGrabbed)
+                /*if (isGrabbed)
                 {
                     // Mark the popup as being grabbed
                     transform.position = mousePos;
                     spriteRenderer.color = Color.white;
-
                     // Set high priority sorting order when grabbed
                     spriteRenderer.sortingOrder = 7;
-
-                    ContactFilter2D filter = new ContactFilter2D();
-                    filter.SetLayerMask(LayerMask.GetMask("ApproveBox"));
-                    List<Collider2D> results = new List<Collider2D>();
-
-                    // check if it overlaps with the boxes to submit files
-                    popupCollider.OverlapCollider(filter, results);
-                    if (results.Count != 0)
-                    {
-                        // Check if document is approved or not and compare it to which bin it is entering
-                        if ((results[0].CompareTag("Approve Bin")) && bApproved)
-                        {
-                            submitted = true;
-                            transform.position = results[0].transform.position;
-                        }
-                        if ((results[0].name == "Denied Bin") && !bApproved)
-                        {
-                            submitted = true;
-                            transform.position = results[0].transform.position;
-                        }
-                    }
-                }
-                else
-                {
+                }*/
+                //else if(!isGrabbed)
+                //{
                     spriteRenderer.sortingOrder = 0;
                     // Check to see if the mouse is hovering over the popup
                     if (popupCollider.OverlapPoint(mousePos))
@@ -141,7 +88,7 @@ public class Popup : MonoBehaviour
                         if (spriteRenderer.color != Color.green) spriteRenderer.color = Color.green;
 
                         // When the mouse is clicked while this popup is being hovered over:
-                        if (Mouse.current.rightButton.wasPressedThisFrame)
+                        if (Input.GetMouseButtonUp(0))
                         {
                             // Mark the popup as in focus
                             inFocus = true;
@@ -164,20 +111,12 @@ public class Popup : MonoBehaviour
                         }
                     }
                     else if (spriteRenderer.color != Color.white) spriteRenderer.color = Color.white;
-                }
+                //}
             }
         }
-
-        // When pressing the mouse button while this popup is in focus, un-focus it
-        // and return it to its original position only when no stamp is held
         else
         {
-            //// if left click while approve is grabbed approve
-            //if (Mouse.current.leftButton.wasPressedThisFrame && approveStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(true);
-            //// if left click while deny is grabbed deny
-            //if (Mouse.current.leftButton.wasPressedThisFrame && denyStamp.GetComponent<GrabStamp>().isGrabbed) this.GetComponentInChildren<Stamp>().StampApprove(false);
-
-            if (Mouse.current.rightButton.wasPressedThisFrame)
+            if (Input.GetMouseButtonUp(0))
             {
                 inFocus = false;
                 transform.position = preFocusTransform.Pos;
@@ -200,4 +139,11 @@ public class Popup : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         GetComponentInChildren<Stamp>().StampApprove(status);
     }
+
+    /*IEnumerator CheckForHoldStatus()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (Input.GetMouseButton(0)) { isGrabbed = true; gameManager.IsGrabbing = true; }
+        else { isGrabbed = false; gameManager.IsGrabbing = false; }
+    }*/
 }

@@ -37,7 +37,7 @@ public class GrabStamp : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        if (Vector3.Distance(mousePos, FindObjectOfType<Stamp>().stampPos.position) < 2f)
         {
             if (gameManager.IsPopupActive && (gameManager.PopupActive != null) && isGrabbed)
             {
@@ -53,16 +53,16 @@ public class GrabStamp : MonoBehaviour
                 if (stampCol.OverlapPoint(mousePos))
                 {
                     // Makes it so player can drag until they click again
-                    isGrabbed = true;
-                    gameManager.IsGrabbing = true;
+                    isGrabbed = !isGrabbed;
+                    gameManager.IsGrabbing = isGrabbed;
                 }
             }
         }
-        else
+        /*else
         {
             isGrabbed = false;
             gameManager.IsGrabbing = false;
-        }
+        }*/
 
 
         if (isGrabbed)
@@ -72,7 +72,7 @@ public class GrabStamp : MonoBehaviour
         }
     }
 
-    public void OnClick(InputAction.CallbackContext context)
+    /*public void OnClick(InputAction.CallbackContext context)
     {
         Debug.Log("clicked");
         if (!context.started)
@@ -84,5 +84,5 @@ public class GrabStamp : MonoBehaviour
         if (stampCol.OverlapPoint(mousePos))
             // Makes it so player can drag until they click again
             isGrabbed = !isGrabbed;
-    }
+    }*/
 }

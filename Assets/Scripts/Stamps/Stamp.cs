@@ -10,6 +10,7 @@ public class Stamp : MonoBehaviour
     public bool bApproved;
     public Sprite approve;
     public Sprite deny;
+    public Transform stampPos;
 
     //public GameObject gameManager;
     //public List<string> status = new List<string>();
@@ -20,6 +21,7 @@ public class Stamp : MonoBehaviour
         patient = transform.parent.GetComponent<DisplayPatientFiles>().CurrentPatient;
         stamp = transform.GetChild(0).GetComponent<SpriteRenderer>();
         bApproved = false;
+        stampPos = stamp.transform;
     }
 
     // Update is called once per frame

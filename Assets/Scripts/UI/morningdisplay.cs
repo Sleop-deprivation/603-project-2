@@ -21,6 +21,7 @@ public class MorningDisplay : MonoBehaviour
     {
         textComponent.text = string.Empty;
         startingPoint = dialogueIndicator.transform.position.y;
+        FindObjectOfType<GameManager>().IsPopupActive = true;
         StartDialogue();
     }
     void Update()
@@ -58,7 +59,11 @@ public class MorningDisplay : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else this.gameObject.SetActive(false);
+        else
+        {
+            FindObjectOfType<GameManager>().IsPopupActive = false;
+            this.gameObject.SetActive(false);
+        }
     }
 
     void AnimateDialogueIndicator()
