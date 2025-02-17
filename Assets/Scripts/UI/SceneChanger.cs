@@ -23,12 +23,12 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadPenultimate()
     {
-        SceneManager.LoadScene(SceneManager.sceneCount - 2);
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 2);
     }
 
     public void LoadEnding()
     {
-        SceneManager.LoadScene(SceneManager.sceneCount - 1);
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
 
     public void QuitGame()
