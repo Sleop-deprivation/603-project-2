@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_PatientFiles[] Day1Patients;
     [SerializeField] SO_PatientFiles[] Day2Patients;
     [SerializeField] SO_PatientFiles[] Day3Patients;
+    [SerializeField] SO_PatientFiles[] daughter;
     List<SO_PatientFiles[]> patients = new List<SO_PatientFiles[]>();
+
+    public List<string> newspaperNews;
     GameObject Clockout;
     //public List<List<string>> patientstatus = new List<List<string>>();
 
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
         patients.Add(Day1Patients);
         patients.Add(Day2Patients);
         patients.Add(Day3Patients);
+        patients.Add(daughter);
 
         if (popupBackground == null)
             popupBackground = GameObject.FindWithTag("PopUpBackground");
@@ -104,6 +108,7 @@ public class GameManager : MonoBehaviour
         foreach(SO_PatientFiles patient in Day1Patients) { patient.IsDenied = false; patient.IsStamped = false; }
         foreach (SO_PatientFiles patient in Day2Patients) { patient.IsDenied = false; patient.IsStamped = false; }
         foreach (SO_PatientFiles patient in Day3Patients) { patient.IsDenied = false; patient.IsStamped = false; }
+        foreach (SO_PatientFiles patient in daughter) { patient.IsDenied = false; patient.IsStamped = false; }
     }
 
     /// <summary>
@@ -163,11 +168,17 @@ public class GameManager : MonoBehaviour
                 if (count == Day3Patients.Length) return true;
             }
         }
+        // This is the penultimate day
+        else if(dayNumber == 3)
+        {
+            if (daughter[0].IsStamped) return true;
+        }
         return false;
     }
 
     public void CheckEndOfDay()
     {
+        newspaperNews.Clear();
         if (dayNumber == 0)
         {
             foreach (SO_PatientFiles patient in Day1Patients)
@@ -175,6 +186,7 @@ public class GameManager : MonoBehaviour
                 GetComponent<DataTracking>().RecordData(patient);
                 if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) rulesbrokenday1++;
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday1++;
+                if (patient.IsDenied) newspaperNews.Add(patient.Newspaper);
             }
         }
         else if (dayNumber == 1)
@@ -184,6 +196,7 @@ public class GameManager : MonoBehaviour
                 GetComponent<DataTracking>().RecordData(patient);
                 if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) rulesbrokenday2++;
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday2++;
+                if (patient.IsDenied) newspaperNews.Add(patient.Newspaper);
             }
         }
         else if (dayNumber == 2)
@@ -193,7 +206,15 @@ public class GameManager : MonoBehaviour
                 GetComponent<DataTracking>().RecordData(patient);
                 if (patient.AcceptanceGuideline != Guidelines.None && !patient.IsDenied) rulesbrokenday3++;
                 if (patient.DenialGuideline != Guidelines.None && patient.IsDenied) rulesbrokenday3++;
+                if (patient.IsDenied) newspaperNews.Add(patient.Newspaper);
+                GetComponent<SceneChanger>().LoadPenultimate();
+                return;
             }
+        }
+        // This is actually the Penultimate scene
+        else if(dayNumber == 3)
+        {
+            GetComponent<DataTracking>().RecordData(daughter[0]);
         }
         GetComponent<SceneChanger>().GoToNextScene();
     }

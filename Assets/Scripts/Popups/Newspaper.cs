@@ -5,40 +5,24 @@ using UnityEngine;
 
 public class Newspaper : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI textMeshPro;
+    private TextMeshProUGUI text;
+    GameManager gm;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-        // Code to test if setting names works
-        List<string> list = new List<string>
-        {
-            "Frank Furter", "Alan Smithee", "Joe Mother", "My Creative Integrity", "Jimbo from Balatro (real)"
-        };
-        SetListOfDead(list);
+        text = GetComponent<TextMeshProUGUI>();
+        gm = FindObjectOfType<GameManager>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
-    }
-
-    /// <summary>
-    /// Sets the list of the dead who appear on the newspaper.
-    /// Using a list of srings for now since I'm not sure how dead patients
-    /// will be stored since I'm working on this before that system is implemented.
-    /// </summary>
-    /// <param name="names">The names of the people who died.</param>
-    public void SetListOfDead(List<string> names)
-    {
-        string newText = "";
-        foreach (string name in names) 
+        if(gm.newspaperNews.Count == 0) text.text = "No recent tragedies have occured within the community today!";
+        else
         {
-            newText += $"- {name}\n";
+            text.text = "Our community has recently been affected by the following tragedies:\n";
+            foreach(string s in gm.newspaperNews)
+            {
+                text.text += $"\n\n{s}";
+            }
         }
-        textMeshPro.text = newText;
     }
 }

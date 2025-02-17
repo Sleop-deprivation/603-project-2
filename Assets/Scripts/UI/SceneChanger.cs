@@ -20,4 +20,19 @@ public class SceneChanger : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(--currentSceneIndex);
     }
+
+    public void LoadPenultimate()
+    {
+        SceneManager.LoadScene(SceneManager.sceneCount - 2);
+    }
+
+    public void LoadEnding()
+    {
+        SceneManager.LoadScene(SceneManager.sceneCount - 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

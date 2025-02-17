@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Intermission.unity
     guid: ebd71d5416728954cb8e543c20e805f1
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/Penultimate.unity
+    guid: 493bd3e0cf6be344081099c8e7196775
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
     guid: 575c2309c2d2b86419930167d77c0c71
   m_configObjects: {}
